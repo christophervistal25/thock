@@ -1,0 +1,40 @@
+{
+ "name": "Soft Tactile",
+ "description": "Softer, deeper tactile board with clear release",
+ "default": [
+  {
+   "down": "v0-down.wav",
+   "up": "v0-up.wav"
+  },
+  {
+   "down": "v1-down.wav",
+   "up": "v1-up.wav"
+  },
+  {
+   "down": "v2-down.wav",
+   "up": "v2-up.wav"
+  },
+  {
+   "down": "v3-down.wav",
+   "up": "v3-up.wav"
+  },
+  {
+   "down": "v4-down.wav",
+   "up": "v4-up.wav"
+  }
+ ],
+ "keys": {
+  "57": {
+   "down": "k57-down.wav",
+   "up": "k57-up.wav"
+  },
+  "28": {
+   "down": "k28-down.wav",
+   "up": "k28-up.wav"
+  },
+  "14": {
+   "down": "k14-down.wav",
+   "up": "k14-up.wav"
+  }
+ }
+}

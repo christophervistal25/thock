@@ -1,0 +1,456 @@
+{
+ "name": "Buckling Spring",
+ "description": "IBM Model M buckling-spring keyboard, every key sampled",
+ "default": [
+  {
+   "down": "k30-down.wav",
+   "up": "k30-up.wav"
+  },
+  {
+   "down": "k31-down.wav",
+   "up": "k31-up.wav"
+  },
+  {
+   "down": "k32-down.wav",
+   "up": "k32-up.wav"
+  },
+  {
+   "down": "k33-down.wav",
+   "up": "k33-up.wav"
+  },
+  {
+   "down": "k34-down.wav",
+   "up": "k34-up.wav"
+  },
+  {
+   "down": "k35-down.wav",
+   "up": "k35-up.wav"
+  },
+  {
+   "down": "k36-down.wav",
+   "up": "k36-up.wav"
+  },
+  {
+   "down": "k37-down.wav",
+   "up": "k37-up.wav"
+  },
+  {
+   "down": "k38-down.wav",
+   "up": "k38-up.wav"
+  }
+ ],
+ "keys": {
+  "1": {
+   "down": "k1-down.wav",
+   "up": "k1-up.wav"
+  },
+  "2": {
+   "down": "k2-down.wav",
+   "up": "k2-up.wav"
+  },
+  "3": {
+   "down": "k3-down.wav",
+   "up": "k3-up.wav"
+  },
+  "4": {
+   "down": "k4-down.wav",
+   "up": "k4-up.wav"
+  },
+  "5": {
+   "down": "k5-down.wav",
+   "up": "k5-up.wav"
+  },
+  "6": {
+   "down": "k6-down.wav",
+   "up": "k6-up.wav"
+  },
+  "7": {
+   "down": "k7-down.wav",
+   "up": "k7-up.wav"
+  },
+  "8": {
+   "down": "k8-down.wav",
+   "up": "k8-up.wav"
+  },
+  "9": {
+   "down": "k9-down.wav",
+   "up": "k9-up.wav"
+  },
+  "10": {
+   "down": "k10-down.wav",
+   "up": "k10-up.wav"
+  },
+  "11": {
+   "down": "k11-down.wav",
+   "up": "k11-up.wav"
+  },
+  "12": {
+   "down": "k12-down.wav",
+   "up": "k12-up.wav"
+  },
+  "13": {
+   "down": "k13-down.wav",
+   "up": "k13-up.wav"
+  },
+  "14": {
+   "down": "k14-down.wav",
+   "up": "k14-up.wav"
+  },
+  "15": {
+   "down": "k15-down.wav",
+   "up": "k15-up.wav"
+  },
+  "16": {
+   "down": "k16-down.wav",
+   "up": "k16-up.wav"
+  },
+  "17": {
+   "down": "k17-down.wav",
+   "up": "k17-up.wav"
+  },
+  "18": {
+   "down": "k18-down.wav",
+   "up": "k18-up.wav"
+  },
+  "19": {
+   "down": "k19-down.wav",
+   "up": "k19-up.wav"
+  },
+  "20": {
+   "down": "k20-down.wav",
+   "up": "k20-up.wav"
+  },
+  "21": {
+   "down": "k21-down.wav",
+   "up": "k21-up.wav"
+  },
+  "22": {
+   "down": "k22-down.wav",
+   "up": "k22-up.wav"
+  },
+  "23": {
+   "down": "k23-down.wav",
+   "up": "k23-up.wav"
+  },
+  "24": {
+   "down": "k24-down.wav",
+   "up": "k24-up.wav"
+  },
+  "25": {
+   "down": "k25-down.wav",
+   "up": "k25-up.wav"
+  },
+  "26": {
+   "down": "k26-down.wav",
+   "up": "k26-up.wav"
+  },
+  "27": {
+   "down": "k27-down.wav",
+   "up": "k27-up.wav"
+  },
+  "28": {
+   "down": "k28-down.wav",
+   "up": "k28-up.wav"
+  },
+  "29": {
+   "down": "k29-down.wav",
+   "up": "k29-up.wav"
+  },
+  "30": {
+   "down": "k30-down.wav",
+   "up": "k30-up.wav"
+  },
+  "31": {
+   "down": "k31-down.wav",
+   "up": "k31-up.wav"
+  },
+  "32": {
+   "down": "k32-down.wav",
+   "up": "k32-up.wav"
+  },
+  "33": {
+   "down": "k33-down.wav",
+   "up": "k33-up.wav"
+  },
+  "34": {
+   "down": "k34-down.wav",
+   "up": "k34-up.wav"
+  },
+  "35": {
+   "down": "k35-down.wav",
+   "up": "k35-up.wav"
+  },
+  "36": {
+   "down": "k36-down.wav",
+   "up": "k36-up.wav"
+  },
+  "37": {
+   "down": "k37-down.wav",
+   "up": "k37-up.wav"
+  },
+  "38": {
+   "down": "k38-down.wav",
+   "up": "k38-up.wav"
+  },
+  "39": {
+   "down": "k39-down.wav",
+   "up": "k39-up.wav"
+  },
+  "40": {
+   "down": "k40-down.wav",
+   "up": "k40-up.wav"
+  },
+  "41": {
+   "down": "k41-down.wav",
+   "up": "k41-up.wav"
+  },
+  "42": {
+   "down": "k42-down.wav",
+   "up": "k42-up.wav"
+  },
+  "43": {
+   "down": "k43-down.wav",
+   "up": "k43-up.wav"
+  },
+  "44": {
+   "down": "k44-down.wav",
+   "up": "k44-up.wav"
+  },
+  "45": {
+   "down": "k45-down.wav",
+   "up": "k45-up.wav"
+  },
+  "46": {
+   "down": "k46-down.wav",
+   "up": "k46-up.wav"
+  },
+  "47": {
+   "down": "k47-down.wav",
+   "up": "k47-up.wav"
+  },
+  "48": {
+   "down": "k48-down.wav",
+   "up": "k48-up.wav"
+  },
+  "49": {
+   "down": "k49-down.wav",
+   "up": "k49-up.wav"
+  },
+  "50": {
+   "down": "k50-down.wav",
+   "up": "k50-up.wav"
+  },
+  "51": {
+   "down": "k51-down.wav",
+   "up": "k51-up.wav"
+  },
+  "52": {
+   "down": "k52-down.wav",
+   "up": "k52-up.wav"
+  },
+  "53": {
+   "down": "k53-down.wav",
+   "up": "k53-up.wav"
+  },
+  "54": {
+   "down": "k54-down.wav",
+   "up": "k54-up.wav"
+  },
+  "55": {
+   "down": "k55-down.wav",
+   "up": "k55-up.wav"
+  },
+  "56": {
+   "down": "k56-down.wav",
+   "up": "k56-up.wav"
+  },
+  "57": {
+   "down": "k57-down.wav",
+   "up": "k57-up.wav"
+  },
+  "58": {
+   "down": "k58-down.wav",
+   "up": "k58-up.wav"
+  },
+  "59": {
+   "down": "k59-down.wav",
+   "up": "k59-up.wav"
+  },
+  "60": {
+   "down": "k60-down.wav",
+   "up": "k60-up.wav"
+  },
+  "61": {
+   "down": "k61-down.wav",
+   "up": "k61-up.wav"
+  },
+  "62": {
+   "down": "k62-down.wav",
+   "up": "k62-up.wav"
+  },
+  "63": {
+   "down": "k63-down.wav",
+   "up": "k63-up.wav"
+  },
+  "64": {
+   "down": "k64-down.wav",
+   "up": "k64-up.wav"
+  },
+  "65": {
+   "down": "k65-down.wav",
+   "up": "k65-up.wav"
+  },
+  "66": {
+   "down": "k66-down.wav",
+   "up": "k66-up.wav"
+  },
+  "67": {
+   "down": "k67-down.wav",
+   "up": "k67-up.wav"
+  },
+  "68": {
+   "down": "k68-down.wav",
+   "up": "k68-up.wav"
+  },
+  "69": {
+   "down": "k69-down.wav",
+   "up": "k69-up.wav"
+  },
+  "70": {
+   "down": "k70-down.wav",
+   "up": "k70-up.wav"
+  },
+  "71": {
+   "down": "k71-down.wav",
+   "up": "k71-up.wav"
+  },
+  "72": {
+   "down": "k72-down.wav",
+   "up": "k72-up.wav"
+  },
+  "73": {
+   "down": "k73-down.wav",
+   "up": "k73-up.wav"
+  },
+  "74": {
+   "down": "k74-down.wav",
+   "up": "k74-up.wav"
+  },
+  "75": {
+   "down": "k75-down.wav",
+   "up": "k75-up.wav"
+  },
+  "76": {
+   "down": "k76-down.wav",
+   "up": "k76-up.wav"
+  },
+  "77": {
+   "down": "k77-down.wav",
+   "up": "k77-up.wav"
+  },
+  "78": {
+   "down": "k78-down.wav",
+   "up": "k78-up.wav"
+  },
+  "79": {
+   "down": "k79-down.wav",
+   "up": "k79-up.wav"
+  },
+  "80": {
+   "down": "k80-down.wav",
+   "up": "k80-up.wav"
+  },
+  "81": {
+   "down": "k81-down.wav",
+   "up": "k81-up.wav"
+  },
+  "82": {
+   "down": "k82-down.wav",
+   "up": "k82-up.wav"
+  },
+  "83": {
+   "down": "k83-down.wav",
+   "up": "k83-up.wav"
+  },
+  "86": {
+   "down": "k86-down.wav",
+   "up": "k86-up.wav"
+  },
+  "87": {
+   "down": "k87-down.wav",
+   "up": "k87-up.wav"
+  },
+  "88": {
+   "down": "k88-down.wav",
+   "up": "k88-up.wav"
+  },
+  "91": {
+   "down": "k91-down.wav",
+   "up": "k91-up.wav"
+  },
+  "96": {
+   "down": "k96-down.wav",
+   "up": "k96-up.wav"
+  },
+  "97": {
+   "down": "k97-down.wav",
+   "up": "k97-up.wav"
+  },
+  "98": {
+   "down": "k98-down.wav",
+   "up": "k98-up.wav"
+  },
+  "99": {
+   "down": "k99-down.wav",
+   "up": "k99-up.wav"
+  },
+  "100": {
+   "down": "k100-down.wav",
+   "up": "k100-up.wav"
+  },
+  "102": {
+   "down": "k102-down.wav",
+   "up": "k102-up.wav"
+  },
+  "103": {
+   "down": "k103-down.wav",
+   "up": "k103-up.wav"
+  },
+  "104": {
+   "down": "k104-down.wav",
+   "up": "k104-up.wav"
+  },
+  "105": {
+   "down": "k105-down.wav",
+   "up": "k105-up.wav"
+  },
+  "106": {
+   "down": "k106-down.wav",
+   "up": "k106-up.wav"
+  },
+  "107": {
+   "down": "k107-down.wav",
+   "up": "k107-up.wav"
+  },
+  "108": {
+   "down": "k108-down.wav",
+   "up": "k108-up.wav"
+  },
+  "109": {
+   "down": "k109-down.wav",
+   "up": "k109-up.wav"
+  },
+  "110": {
+   "down": "k110-down.wav",
+   "up": "k110-up.wav"
+  },
+  "111": {
+   "down": "k111-down.wav",
+   "up": "k111-up.wav"
+  },
+  "125": {
+   "down": "k125-down.wav",
+   "up": "k125-up.wav"
+  }
+ }
+}
