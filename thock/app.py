@@ -136,7 +136,17 @@ def run_app(argv):
                 self.window = SettingsWindow(self)
                 self.add_window(self.window)
             self.window.show_all()
-            self.window.present()
+            # Raise above other windows even when opened from the tray or a second launch
+            ts = Gtk.get_current_event_time()
+            try:
+                gi.require_version("GdkX11", "3.0")
+                from gi.repository import GdkX11
+                gw = self.window.get_window()
+                if gw is not None and isinstance(gw, GdkX11.X11Window):
+                    ts = GdkX11.x11_get_server_time(gw)
+            except (ValueError, ImportError):
+                pass
+            self.window.present_with_time(ts)
 
         def do_shutdown(self):
             _log("shutting down")
