@@ -3,24 +3,120 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thock: mechanical keyboard sounds for Linux</title>
-<meta name="description" content="Thock plays real mechanical keyboard sounds as you type on Ubuntu and other Linux desktops. 14 sound packs, mouse clicks, tone control, spatial audio, about 15 ms latency. Nothing you type is stored or sent.">
+<title>Thock: free mechanical keyboard sounds app for Linux (Ubuntu, X11)</title>
+<meta name="description" content="Thock is a free Linux app that plays real mechanical keyboard sounds as you type on Ubuntu and other Debian-based desktops. 14 sound packs, mouse clicks, tone control, spatial audio, about 15 ms latency. Nothing you type is stored or sent.">
+<meta name="author" content="Chris (christophervistal25)">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://christophervistal25.github.io/thock/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="llms.txt" title="Thock summary for AI assistants (llms.txt)">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Thock">
+<meta property="og:title" content="Thock: mechanical keyboard sounds for Linux">
+<meta property="og:description" content="Free Linux tray app: every key you press plays a real mechanical switch recording. 14 sound packs, about 15 ms latency, nothing you type is stored or sent.">
+<meta property="og:url" content="https://christophervistal25.github.io/thock/">
+<meta property="og:image" content="https://christophervistal25.github.io/thock/assets/screen-packs-light.png">
+<meta property="og:image:width" content="798">
+<meta property="og:image:height" content="686">
+<meta property="og:image:alt" content="Thock settings window with the sound pack list">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Thock: mechanical keyboard sounds for Linux">
+<meta name="twitter:description" content="Free Linux tray app: every key you press plays a real mechanical switch recording. 14 sound packs, about 15 ms latency.">
+<meta name="twitter:image" content="https://christophervistal25.github.io/thock/assets/screen-packs-light.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://christophervistal25.github.io/thock/#app",
+      "name": "Thock",
+      "description": "Thock is a free Linux desktop app that plays real mechanical keyboard sounds as you type. It runs in the system tray, has 14 sound packs recorded from real keyboards, optional mouse click sounds, a tone control from deep thock to bright clack, spatial audio, and about 15 ms latency. It never logs, stores or sends what you type.",
+      "url": "https://christophervistal25.github.io/thock/",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "Keyboard sound simulator",
+      "operatingSystem": "Linux (Ubuntu 22.04 or newer, Debian-based distributions, X11 session)",
+      "softwareVersion": "1.0.0",
+      "softwareRequirements": "X11 session, Python 3, PortAudio, GTK 3, AyatanaAppIndicator",
+      "downloadUrl": "https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz",
+      "installUrl": "https://christophervistal25.github.io/thock/#install",
+      "releaseNotes": "https://github.com/christophervistal25/thock/releases/latest",
+      "screenshot": "https://christophervistal25.github.io/thock/assets/screen-packs-light.png",
+      "image": "https://christophervistal25.github.io/thock/favicon.svg",
+      "fileSize": "15MB",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" },
+      "featureList": [
+        "14 sound packs from real recordings: Thocky, Rainy 75, Lubed Tactile, Buckling Spring (IBM Model M), Clicky Blue, Tactile Brown, Soft Tactile, Deep Clear, Smooth Linear, Box Jade, Topre, Vintage Alps, Typewriter, Laptop",
+        "Separate key press and key release sounds",
+        "Tone control from deep thock to bright clack",
+        "Spatial audio: left-hand keys on the left speaker, right-hand keys on the right",
+        "Optional mouse click sounds",
+        "Optional sound on key repeat",
+        "About 15 ms from key press to sound",
+        "Private: no keystroke logging, no network connections"
+      ],
+      "author": { "@type": "Person", "name": "Chris", "url": "https://github.com/christophervistal25" },
+      "sameAs": ["https://github.com/christophervistal25/thock"],
+      "dateModified": "2026-11-03"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://christophervistal25.github.io/thock/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is Thock?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Thock is a free Linux app that plays a real mechanical keyboard sound every time you press a key. It runs in the system tray and has 14 sound packs recorded from real keyboards." } },
+        { "@type": "Question", "name": "Is Thock free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Thock is free to download and use, and its source code is on GitHub." } },
+        { "@type": "Question", "name": "Does Thock work on Windows or macOS?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 session." } },
+        { "@type": "Question", "name": "Does Thock work on Wayland?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not yet. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose Ubuntu on Xorg at the login screen to use Thock." } },
+        { "@type": "Question", "name": "Does Thock record or log what I type?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Thock only uses which key went down or up to pick and pan a sound, then forgets it. Nothing you type is logged, stored or sent, and Thock makes no network connections." } },
+        { "@type": "Question", "name": "How do I install Thock on Ubuntu?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Run this in a terminal: cd ~ && wget -qO- https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz | tar xz && cd thock && ./install.sh && bin/thock. The installer adds any missing system packages, puts Thock in the app menu and turns on start at login." } },
+        { "@type": "Question", "name": "Which keyboard sounds does Thock include?",
+          "acceptedAnswer": { "@type": "Answer", "text": "14 packs: Thocky, Rainy 75, Lubed Tactile, Buckling Spring (IBM Model M), Clicky Blue (Cherry MX Blue), Tactile Brown (Cherry MX Brown), Soft Tactile, Deep Clear (Cherry MX Clear), Smooth Linear, Box Jade, Topre, Vintage Alps, Typewriter and Laptop." } },
+        { "@type": "Question", "name": "Which Thock sound pack is the most relaxing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Thocky and Rainy 75 are the calmest: deep, muffled sounds with soft attacks and little high-frequency click. Lubed Tactile is a warmer, smoother tactile option." } },
+        { "@type": "Question", "name": "Is there a delay between typing and the sound?",
+          "acceptedAnswer": { "@type": "Answer", "text": "About 15 ms in total, which feels instant. Bluetooth headphones add their own delay, often 100 ms or more; wired or USB audio is faster." } },
+        { "@type": "Question", "name": "Can I make the sound deeper or brighter?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tone slider in the settings window shifts every pack from deep thock to bright clack." } },
+        { "@type": "Question", "name": "How do I uninstall Thock?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Quit Thock with bin/thock --quit, then delete ~/.config/autostart/thock.desktop, ~/.local/share/applications/thock.desktop, ~/.config/thock and the thock folder." } },
+        { "@type": "Question", "name": "Who made Thock and why?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Thock is a personal project by Chris (christophervistal25 on GitHub), inspired by the calm, hand-coded programming videos of the YouTube channel Hayyoth. It was built for personal use and shared for anyone who finds it useful. It is not affiliated with Hayyoth." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body style="font-family: Arial, 'Liberation Sans', Helvetica, sans-serif">
 
+<header>
 <h1><img src="favicon.svg" width="36" height="36" alt="" style="vertical-align: -6px"> Thock</h1>
 <h2>A personal project, built for the joy of typing.</h2>
 <p>I made Thock for myself, inspired by <a href="#inspiration">Hayyoth's</a> calm, hand-coded programming videos. It was never meant to be shared, but if you find it useful, you're welcome to use it.</p>
-<p><b>Mechanical keyboard sounds for your Linux desktop.</b></p>
+<p><b>Thock is a free Linux app that plays real mechanical keyboard sounds as you type.</b></p>
 <p>Every key you press plays a real switch recording, from a buckling-spring IBM Model M to Topre, Box Jade and a vintage typewriter. It lives in your tray and stays out of the way.</p>
 <p>
   <a href="https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz"><b>Download for Linux</b></a> |
   <a href="https://github.com/christophervistal25/thock" target="_blank" rel="noopener noreferrer">Source on GitHub</a> |
   <a href="https://github.com/christophervistal25/thock/releases/latest" target="_blank" rel="noopener noreferrer">Release notes</a>
 </p>
-<p>Free. Ubuntu / Debian. X11 session.</p>
+<p>Free. Ubuntu / Debian. X11 session. Version 1.0.0. Last updated: <time datetime="2026-11-03">2026-11-03</time>.</p>
+<p><a href="#install">Install</a> | <a href="#faq">FAQ</a> | <a href="#packs">Sound packs</a> | <a href="#troubleshooting">Troubleshooting</a> | <a href="#credits">Credits</a></p>
+</header>
 
+<main>
 <hr>
 
 <h2 id="inspiration">Inspired by Hayyoth</h2>
@@ -32,7 +128,7 @@ The calm, steady rhythm of the keys in those videos is the feeling Thock tries t
 
 <hr>
 
-<h2>Install</h2>
+<h2 id="install">Install</h2>
 <p>One line, in a terminal:</p>
 <pre>cd ~ &amp;&amp; wget -qO- https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz | tar xz &amp;&amp; cd thock &amp;&amp; ./install.sh &amp;&amp; bin/thock</pre>
 <p>Or clone the repository:</p>
@@ -139,7 +235,7 @@ cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
 
 <hr>
 
-<h2>Sound packs</h2>
+<h2 id="packs">Sound packs</h2>
 <p>14 packs, all real recordings. Pick one from the tray menu or the settings window.</p>
 
 <h3>Calm and deep (new)</h3>
@@ -164,7 +260,7 @@ cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
   <li><b>Laptop</b>: MacBook low-travel keys. Quiet, flat, papery tap.</li>
 </ul>
 
-<h2>Features</h2>
+<h2 id="features">Features</h2>
 <ul>
   <li><b>Press and release</b> sounds, with their own samples for Space, Enter and Backspace where the recording has them.</li>
   <li><b>Tone control</b> from deep "thock" to bright "clack".</li>
@@ -180,12 +276,50 @@ cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
 <h3 id="privacy">Privacy</h3>
 <p>Input is read with the X RECORD extension. Only the event type (key down, key up, mouse button) and the keycode are used, in memory, to choose and pan a sound, and are dropped immediately. Nothing you type is logged, stored or sent. Thock makes no network connections.</p>
 
-<h2>Screenshot</h2>
-<p><img src="assets/screen-packs-light.png" width="400" alt="Thock settings window with the sound pack list"></p>
+<h2 id="faq">Frequently asked questions</h2>
+
+<h3>What is Thock?</h3>
+<p>Thock is a free Linux app that plays a real mechanical keyboard sound every time you press a key. It runs in the system tray and has 14 sound packs recorded from real keyboards.</p>
+
+<h3>Is Thock free?</h3>
+<p>Yes. Thock is free to download and use, and its source code is on <a href="https://github.com/christophervistal25/thock" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+
+<h3>Does Thock work on Windows or macOS?</h3>
+<p>No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 session.</p>
+
+<h3>Does Thock work on Wayland?</h3>
+<p>Not yet. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose <b>Ubuntu on Xorg</b> at the login screen to use Thock.</p>
+
+<h3>Does Thock record or log what I type?</h3>
+<p>No. Thock only uses which key went down or up to pick and pan a sound, then forgets it. Nothing you type is logged, stored or sent, and Thock makes no network connections. Details: <a href="#privacy">Privacy</a>.</p>
+
+<h3>How do I install Thock on Ubuntu?</h3>
+<p>Run the one-line command in <a href="#install">Install</a>. The installer adds any missing system packages, puts Thock in the app menu and turns on start at login.</p>
+
+<h3>Which keyboard sounds does Thock include?</h3>
+<p>14 packs: Thocky, Rainy 75, Lubed Tactile, Buckling Spring (IBM Model M), Clicky Blue (Cherry MX Blue), Tactile Brown (Cherry MX Brown), Soft Tactile, Deep Clear (Cherry MX Clear), Smooth Linear, Box Jade, Topre, Vintage Alps, Typewriter and Laptop. See <a href="#packs">Sound packs</a>.</p>
+
+<h3>Which Thock sound pack is the most relaxing?</h3>
+<p>Thocky and Rainy 75 are the calmest: deep, muffled sounds with soft attacks and little high-frequency click. Lubed Tactile is a warmer, smoother tactile option.</p>
+
+<h3>Is there a delay between typing and the sound?</h3>
+<p>About 15 ms in total, which feels instant. Bluetooth headphones add their own delay, often 100 ms or more; wired or USB audio is faster.</p>
+
+<h3>Can I make the sound deeper or brighter?</h3>
+<p>Yes. The tone slider in the settings window shifts every pack from deep "thock" to bright "clack".</p>
+
+<h3>How do I uninstall Thock?</h3>
+<p>Quit Thock, then delete its app menu entry, autostart entry, settings folder and the Thock folder. The exact commands are in <a href="#uninstall">Uninstall</a>.</p>
+
+<h3>Who made Thock and why?</h3>
+<p>Thock is a personal project by Chris (<a href="https://github.com/christophervistal25" target="_blank" rel="noopener noreferrer">christophervistal25</a> on GitHub), inspired by the calm, hand-coded programming videos of the YouTube channel <a href="#inspiration">Hayyoth</a>. It was built for personal use and shared for anyone who finds it useful.</p>
+
+<h2 id="screenshot">Screenshot</h2>
+<p><img src="assets/screen-packs-light.png" width="400" height="344" alt="Thock settings window on Ubuntu showing the list of 14 mechanical keyboard sound packs"></p>
 
 <hr>
 
-<h2>Sound credits</h2>
+<h2 id="credits">Sound credits</h2>
 <p>Thank you to everyone who recorded and shared these sounds. Every pack is a genuine recording under a free license.</p>
 
 <h3>Calm and deep packs (CC0)</h3>
@@ -223,8 +357,12 @@ cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
 
 <p>Full list of sources, authors, licenses and edits: <a href="https://github.com/christophervistal25/thock/blob/master/SOUNDS-LICENSES.md" target="_blank" rel="noopener noreferrer">SOUNDS-LICENSES.md</a></p>
 
+</main>
+
 <hr>
-<p>Thock. Made for Linux desktops. <a href="https://github.com/christophervistal25/thock/issues" target="_blank" rel="noopener noreferrer">Report a problem</a></p>
+<footer>
+<p>Thock. Made for Linux desktops. <a href="https://github.com/christophervistal25/thock/issues" target="_blank" rel="noopener noreferrer">Report a problem</a> | <a href="llms.txt">llms.txt</a></p>
+</footer>
 
 </body>
 </html>
