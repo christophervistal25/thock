@@ -63,6 +63,8 @@ def main():
     index = {"sampleRate": WEB_SR, "packs": [], "mouse": None}
     total = 0
     for p in list_packs():
+        if p["private"]:            # personal packs stay on this machine, never on the website
+            continue
         base = os.path.join(PACKS_DIR, p["id"])
         meta = json.load(open(os.path.join(base, "pack.json")))
         sp = Sprite()
