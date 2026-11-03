@@ -19,6 +19,7 @@
   <div class="wrap nav-inner">
     <a class="brand" href="#top"><img src="favicon.svg" alt="" width="28" height="28"><span>Thock</span></a>
     <nav aria-label="Sections">
+      <a href="#tt">Try it</a>
       <a href="#features">Features</a>
       <a href="#screenshots">Screenshots</a>
       <a href="#install">Install</a>
@@ -44,12 +45,52 @@
         </div>
         <p class="meta">Free · Ubuntu / Debian · X11 session · <a href="https://github.com/christophervistal25/thock/releases/latest">Release notes</a></p>
       </div>
-      <figure class="hero-shot">
-        <picture>
-          <source srcset="assets/screen-packs-dark.png" media="(prefers-color-scheme: dark)">
-          <img src="assets/screen-packs-light.png" width="798" height="686" alt="Thock settings window showing the list of sound packs, each with a Try button">
-        </picture>
-      </figure>
+      <div class="tt" id="tt">
+        <div class="tt-head">
+          <div>
+            <h2 class="tt-title">Try it right here</h2>
+            <p class="tt-sub">Type the line below and hear Thock's own samples. Esc restarts.</p>
+          </div>
+          <dl class="tt-stats">
+            <div><dt>WPM</dt><dd data-stat="wpm">0</dd></div>
+            <div><dt>Accuracy</dt><dd data-stat="acc">100%</dd></div>
+            <div><dt>Time</dt><dd data-stat="time">0.0s</dd></div>
+          </dl>
+        </div>
+        <div class="tt-area">
+          <p class="tt-text" aria-hidden="true"></p>
+          <input class="tt-input" type="text" aria-label="Typing test: type the sentence shown" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done">
+          <p class="tt-hint"><span class="tt-hint-key">Click here and start typing</span><span class="tt-hint-touch">Tap here to type. Sounds work best with a physical keyboard.</span></p>
+          <p class="tt-doneline">Done. Press Enter or choose New text for another line.</p>
+        </div>
+        <p class="tt-status" role="status" hidden></p>
+        <div class="tt-actions">
+          <button type="button" class="tt-btn" data-act="restart">Restart</button>
+          <button type="button" class="tt-btn" data-act="next">New text</button>
+        </div>
+        <form class="tt-settings" aria-label="Sound settings" onsubmit="return false">
+          <div class="tt-row tt-row-pack">
+            <label for="tt-pack">Sound pack</label>
+            <select id="tt-pack" name="pack"><option value="tactile-brown">Tactile Brown</option></select>
+            <p class="tt-desc"></p>
+          </div>
+          <div class="tt-row">
+            <label for="tt-vol">Volume</label>
+            <input id="tt-vol" type="range" name="volume" min="0" max="1" step="0.01">
+          </div>
+          <div class="tt-row">
+            <label for="tt-tone">Tone</label>
+            <div class="tt-tone"><span>Thock</span><input id="tt-tone" type="range" name="tone" min="-1" max="1" step="0.05"><span>Clack</span></div>
+          </div>
+          <div class="tt-toggles">
+            <label class="tt-switch"><input type="checkbox" name="mouse"><span>Mouse clicks</span></label>
+            <label class="tt-switch"><input type="checkbox" name="spatial"><span>Spatial audio</span></label>
+            <label class="tt-switch"><input type="checkbox" name="variation"><span>Natural variation</span></label>
+            <label class="tt-switch"><input type="checkbox" name="repeat"><span>Sound on key repeat</span></label>
+          </div>
+          <button type="button" class="tt-reset" data-act="reset">Reset to app defaults</button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -130,6 +171,7 @@
         <li>“Tippen - Leertaste drücken, Apple.wav” by <a href="https://freesound.org/people/BockelSound/sounds/489383/">BockelSound</a> on Freesound, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. One press sliced out, noise-reduced and level-matched.</li>
         <li>The Buckling Spring pack comes from <a href="https://github.com/zevv/bucklespring">bucklespring</a> by Ico Doornekamp, GPL-2.0.</li>
       </ul>
+      <p>The typing test on this page plays lightweight 32 kHz copies of the same recordings, under the same licenses.</p>
       <p>Full list of sources, authors and licenses: <a href="https://github.com/christophervistal25/thock/blob/master/SOUNDS-LICENSES.md">SOUNDS-LICENSES.md</a>.</p>
     </div>
   </section>
@@ -142,6 +184,7 @@
   </div>
 </footer>
 
+<script src="typing.js" defer></script>
 <script>
 document.querySelectorAll('button.copy').forEach(function (b) {
   b.addEventListener('click', function () {

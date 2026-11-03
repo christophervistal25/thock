@@ -70,5 +70,9 @@ commercial product are used.
   recording so the pack is one consistent, clean source. UberBosser's file is no longer used.
 - Deep Clear: stronger noise reduction and a gentle noise gate on the humi74 recording to remove background hiss.
 
+Web copies: `docs/assets/packs/` holds 32 kHz resampled copies of these same recordings (made by
+`tools/build_web_packs.py`) for the typing test on the landing page. They are under the same licenses and
+attributions as listed above.
+
 CC0 = public domain dedication, no attribution required (credited here anyway).
 CC BY 4.0 = free to use and modify with attribution; the attributions above satisfy it for personal use.

@@ -52,7 +52,7 @@ code.block { display: block; margin-top: 8px; padding: 10px 12px; overflow-x: au
 
 /* hero */
 .hero { padding: 72px 0 56px; }
-.hero-inner { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
 .hero-icon { display: block; margin-bottom: 16px; border-radius: 16px; }
 h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 8px; }
 .pitch { font-size: 24px; line-height: 1.35; font-weight: 600; margin: 0 0 16px; }
@@ -68,6 +68,52 @@ h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 8p
 .meta { color: var(--muted); font-size: 14px; margin: 16px 0 0; }
 .hero-shot { margin: 0; }
 .hero-shot img, .shots img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow); }
+
+/* typing test */
+.tt { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); padding: 24px; min-width: 0; scroll-margin-top: 88px; }
+.tt-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+.tt-title { font-size: 20px; margin: 0 0 2px; letter-spacing: 0; }
+.tt-sub { margin: 0; color: var(--muted); font-size: 14px; }
+.tt-stats { display: flex; gap: 20px; margin: 0; flex: none; }
+.tt-stats div { text-align: right; }
+.tt-stats dt { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.tt-stats dd { margin: 0; font: 700 22px/1.2 "Ubuntu Sans Mono", "Ubuntu Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+.tt-stats div:first-child dd { color: var(--accent); }
+.tt-area { position: relative; background: var(--code-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; min-height: 132px; cursor: text; transition: border-color .15s; }
+.is-focused .tt-area { border-color: var(--accent); }
+.tt-text { margin: 0; font: 20px/1.6 "Ubuntu Sans Mono", "Ubuntu Mono", ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); word-break: break-word; }
+.tt-text .ok { color: var(--fg); }
+.tt-text .bad { color: #fff; background: #C7362B; border-radius: 3px; }
+.tt-text .cur { box-shadow: inset 0 -2px 0 var(--accent); color: var(--fg); }
+.tt-input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; border: 0; padding: 0; font-size: 16px; cursor: text; color: transparent; background: transparent; caret-color: transparent; }
+.tt-hint, .tt-doneline { margin: 10px 0 0; font-size: 13px; font-weight: 600; color: var(--accent); }
+.tt-hint-touch, .is-touch .tt-hint-key { display: none; }
+.is-touch .tt-hint-touch { display: inline; }
+.tt-doneline { position: absolute; left: 20px; right: 20px; bottom: 18px; visibility: hidden; }
+/* hide by visibility so the layout never shifts under the pointer when focus changes */
+.is-focused .tt-hint, .is-done .tt-hint { visibility: hidden; }
+.is-done .tt-doneline { visibility: visible; }
+.tt-status { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+.tt-actions { display: flex; gap: 8px; margin: 12px 0 0; }
+.tt-btn, .tt-reset { height: 34px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--fg); font: 600 14px/1 inherit; font-family: inherit; cursor: pointer; }
+.tt-btn:hover, .tt-reset:hover { border-color: var(--accent); color: var(--accent); }
+.tt-settings { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+.tt-row { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tt-row-pack { grid-column: 1 / -1; }
+.tt-row label { font-size: 13px; font-weight: 700; color: var(--muted); }
+.tt-row select { height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--fg); font: 15px inherit; font-family: inherit; }
+.tt-desc { margin: 0; color: var(--muted); font-size: 13px; min-height: 1.6em; }
+.tt-settings input[type=range] { width: 100%; accent-color: var(--accent); margin: 6px 0; }
+.tt-tone { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); }
+.tt-tone input { flex: 1; min-width: 0; }
+.tt-toggles { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+.tt-switch { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; cursor: pointer; }
+.tt-switch input { order: 2; appearance: none; -webkit-appearance: none; flex: none; width: 38px; height: 22px; border-radius: 11px; background: color-mix(in srgb, var(--fg) 22%, transparent); position: relative; cursor: pointer; transition: background-color .15s; margin: 0; }
+.tt-switch input::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s; }
+.tt-switch input:checked { background: var(--accent); }
+.tt-switch input:checked::after { transform: translateX(16px); }
+.tt-switch input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tt-reset { grid-column: 1 / -1; justify-self: start; height: 30px; font-size: 13px; color: var(--muted); }
 
 /* install strip */
 .install-strip { padding: 8px 0 64px; }
@@ -118,5 +164,13 @@ h2 { font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 8px
   h2 { font-size: 26px; }
   .pitch { font-size: 20px; }
   .btn { width: 100%; justify-content: center; }
+  .tt { padding: 18px; }
+  .tt-head { flex-direction: column; }
+  .tt-stats { width: 100%; justify-content: space-between; }
+  .tt-stats div { text-align: left; }
+  .tt-text { font-size: 17px; }
+  .tt-settings, .tt-toggles { grid-template-columns: 1fr; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .tt-area, .tt-switch input, .tt-switch input::after { transition: none; } }
+.hero-inner > *, .two-col > * { min-width: 0; }
+.credits li { overflow-wrap: anywhere; }
