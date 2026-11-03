@@ -22,7 +22,8 @@ def list_packs():
             continue
         with open(pj) as f:
             meta = json.load(f)
-        out.append({"id": pid, "name": meta.get("name", pid), "description": meta.get("description", "")})
+        out.append({"id": pid, "name": meta.get("name", pid), "description": meta.get("description", ""),
+                    "private": bool(meta.get("private", False))})   # private: personal pack, never published
     return sorted(out, key=lambda p: p["name"].lower())
 
 
@@ -69,11 +70,17 @@ class Pack:
 
         self.default = [(get(e["down"]), get(e.get("up"))) for e in meta.get("default", [])]
         self.keys = {int(k): (get(e["down"]), get(e.get("up"))) for k, e in meta.get("keys", {}).items()}
-        mdir = os.path.join(PACKS_DIR, "_mouse")
-        md = os.path.join(mdir, "down.wav")
-        mu = os.path.join(mdir, "up.wav")
-        self.mouse = (tilt(_read_wav(md), tone) if os.path.exists(md) else None,
-                      tilt(_read_wav(mu), tone) if os.path.exists(mu) else None)
+        # a pack may bring its own mouse clicks ("mouse": {"down": ..., "up": ...}); otherwise the shared ones
+        own = meta.get("mouse")
+        if own:
+            md = os.path.join(base, own["down"]) if own.get("down") else None
+            mu = os.path.join(base, own["up"]) if own.get("up") else None
+        else:
+            mdir = os.path.join(PACKS_DIR, "_mouse")
+            md = os.path.join(mdir, "down.wav")
+            mu = os.path.join(mdir, "up.wav")
+        self.mouse = (tilt(_read_wav(md), tone) if md and os.path.exists(md) else None,
+                      tilt(_read_wav(mu), tone) if mu and os.path.exists(mu) else None)
 
     def pick(self, code, rng):
         s = self.keys.get(code)
