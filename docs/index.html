@@ -46,7 +46,94 @@ cd ~/thock &amp;&amp; ./install.sh</pre>
   <li>About 15 MB of disk space</li>
 </ul>
 <p>Wayland isn't supported yet: it doesn't let apps hear system-wide key presses.</p>
-<p>Something not working? See the <a href="https://github.com/christophervistal25/thock#troubleshooting">troubleshooting guide</a>.</p>
+<p>Something not working? See <a href="#troubleshooting">Troubleshooting</a> below.</p>
+
+<h3>Update</h3>
+<p>Git install: <code>cd ~/thock &amp;&amp; git pull &amp;&amp; ./install.sh</code>. Download install: extract the new release over the old folder and run <code>./install.sh</code> again. Your settings are kept.</p>
+<p>Keep the folder where you installed it: the app menu entry and start at login point to it.</p>
+
+<hr>
+
+<h2 id="using">Using Thock</h2>
+<p>Run commands from the Thock folder (for example <code>cd ~/thock</code>).</p>
+<table border="1" cellpadding="6" cellspacing="0">
+  <tr><th align="left">What</th><th align="left">How</th></tr>
+  <tr><td>Open settings</td><td>App menu: <b>Thock</b>, tray icon: <b>Settings...</b>, or <code>bin/thock --settings</code></td></tr>
+  <tr><td>Start</td><td><code>bin/thock</code> (also starts at login)</td></tr>
+  <tr><td>Quit</td><td>Tray: <b>Quit Thock</b>, or <code>bin/thock --quit</code></td></tr>
+  <tr><td>Pause sounds</td><td>Tray: uncheck <b>Sounds On</b>, or the switch at the top of the settings window</td></tr>
+  <tr><td>Test the sound</td><td><code>bin/thock --self-test</code> (current pack) or <code>bin/thock --self-test --all-packs</code></td></tr>
+  <tr><td>Measure latency</td><td><code>bin/thock --latency-test</code></td></tr>
+  <tr><td>Settings file</td><td><code>~/.config/thock/config.json</code> (preferences only)</td></tr>
+</table>
+
+<hr>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3>Thock doesn't open from the app menu</h3>
+<p>Run it in a terminal so you can see the error:</p>
+<pre>cd ~/thock &amp;&amp; bin/thock --settings</pre>
+<p>If it was started at login, earlier errors are in the journal: <code>journalctl --user -b | grep -i thock</code>. The fixes below cover the usual messages.</p>
+
+<h3><code>No module named thock</code></h3>
+<p>The app menu entry points to a folder that moved or is out of date. Update and re-run the installer from the folder you want to keep:</p>
+<pre>cd ~/thock &amp;&amp; git pull &amp;&amp; ./install.sh     # or extract the latest release here, then ./install.sh</pre>
+
+<h3>Missing module or library</h3>
+<p>For <code>No module named 'gi'</code>, <code>Namespace Gtk not available</code>, <code>Namespace AyatanaAppIndicator3 not available</code>, <code>No module named 'Xlib'</code>, <code>PortAudio library not found</code> or <code>No module named 'sounddevice'</code>: a system package or the Python environment is missing. Re-run the installer, which installs what's missing:</p>
+<pre>cd ~/thock &amp;&amp; ./install.sh</pre>
+<p>Or install the system packages by hand, then run <code>./install.sh</code> again:</p>
+<pre>sudo apt install python3-venv python3-gi python3-xlib gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1 libportaudio2</pre>
+<p>If the error persists, delete the environment so it's rebuilt: <code>rm -rf .venv &amp;&amp; ./install.sh</code>.</p>
+
+<h3>No sound at all while typing, and you're on Wayland</h3>
+<p><code>echo $XDG_SESSION_TYPE</code> prints <code>wayland</code>. Wayland doesn't let apps hear system-wide key presses, so Thock can't work there. Log out, click the gear icon on the login screen, choose <b>Ubuntu on Xorg</b>, and log in again.</p>
+
+<h3>No tray icon (GNOME)</h3>
+<p>GNOME needs the AppIndicator extension to show tray icons. Ubuntu ships it on by default (<i>Ubuntu AppIndicators</i>). Check and turn it on:</p>
+<pre>gnome-extensions list --enabled | grep -i appindicator
+gnome-extensions enable ubuntu-appindicators@ubuntu.com</pre>
+<p>On other distributions install <b>AppIndicator and KStatusNotifierItem Support</b> from extensions.gnome.org. Thock still works without the icon; use <code>bin/thock --settings</code> to change settings.</p>
+
+<h3>No sound, or sound comes out of the wrong device</h3>
+<ol>
+  <li>Check that the right output is selected and not muted in <b>Settings &gt; Sound</b>.</li>
+  <li>Check Thock isn't paused (tray: <b>Sounds On</b>, or the switch in settings) and the volume isn't at 0.</li>
+  <li>Run <code>bin/thock --self-test</code>. If you hear the test sweep, audio works and the problem is key capture (see Wayland and RECORD). If you don't, it's the audio output.</li>
+  <li>Thock uses your system default output, so switch the default device in Sound settings, then restart Thock (<code>bin/thock --quit</code>, then <code>bin/thock</code>).</li>
+</ol>
+
+<h3>Sound feels delayed</h3>
+<p>Run <code>bin/thock --latency-test</code>; a healthy result is around 15 ms in total. Thock asks PipeWire for a 256-frame buffer. You can ask for a smaller one, or a larger one if you hear crackles:</p>
+<pre>bin/thock --quit
+PIPEWIRE_LATENCY=128/48000 bin/thock     # lower latency
+PIPEWIRE_LATENCY=512/48000 bin/thock     # more stable on slow machines</pre>
+<p>Bluetooth headphones add their own delay (often 100 ms or more); wired or USB audio is much faster.</p>
+
+<h3><code>X server has no RECORD extension</code></h3>
+<p>Thock reads key presses through the X11 RECORD extension, which almost every X server has. Check with:</p>
+<pre>xdpyinfo | grep -i record</pre>
+<p>If nothing is printed, your X server has it disabled (look for <code>Option "RECORD" "false"</code> or a <code>Disable</code> line in <code>/etc/X11/xorg.conf</code> or <code>/etc/X11/xorg.conf.d/</code>). Inside remote desktops and some virtual machines it may not be available at all.</p>
+
+<h3>"Already running", or the settings window won't open</h3>
+<p>Only one copy of Thock runs at a time; opening it again just brings up the settings window of the running copy. If the window doesn't appear, stop it and start fresh:</p>
+<pre>bin/thock --quit
+pkill -f "python -m thock"     # only if --quit didn't stop it
+bin/thock --settings</pre>
+
+<h3>Turn off start at login</h3>
+<p>Settings &gt; General &gt; <b>Start at login</b> off, or:</p>
+<pre>rm ~/.config/autostart/thock.desktop</pre>
+
+<h3 id="uninstall">Uninstall</h3>
+<pre>cd ~/thock &amp;&amp; bin/thock --quit
+rm -f ~/.config/autostart/thock.desktop ~/.local/share/applications/thock.desktop
+rm -rf ~/.config/thock      # your settings
+cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
+<p>The system packages <code>install.sh</code> added are shared with other apps, so they are left in place.</p>
+
+<p>Still stuck? <a href="https://github.com/christophervistal25/thock/issues">Open an issue</a> with the output of <code>bin/thock --settings</code> and <code>echo $XDG_SESSION_TYPE</code>.</p>
 
 <hr>
 
@@ -87,6 +174,9 @@ cd ~/thock &amp;&amp; ./install.sh</pre>
   <li><b>About 15 ms</b> from key press to sound.</li>
   <li><b>Private</b>: nothing you type is logged, stored or sent. No network connections.</li>
 </ul>
+
+<h3 id="privacy">Privacy</h3>
+<p>Input is read with the X RECORD extension. Only the event type (key down, key up, mouse button) and the keycode are used, in memory, to choose and pan a sound, and are dropped immediately. Nothing you type is logged, stored or sent. Thock makes no network connections.</p>
 
 <h2>Screenshot</h2>
 <p><img src="assets/screen-packs-light.png" width="400" alt="Thock settings window with the sound pack list"></p>
