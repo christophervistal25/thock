@@ -1,7 +1,8 @@
-import json, os, shutil, subprocess, wave, numpy as np
+import json, os, shutil, subprocess, sys, wave, numpy as np
 SR=48000; SRC='/workspace/thock-src'; OUT=SRC+'/out/packs'
 def load(f, denoise=False):
-    af=['-af','afftdn=nr=18:nf=-50'] if denoise else []
+    nr=denoise if isinstance(denoise,(int,float)) and not isinstance(denoise,bool) else 18
+    af=['-af',f'afftdn=nr={nr}:nf=-50,agate=threshold=0.004:ratio=3:attack=0.5:release=40'] if denoise else []
     raw=subprocess.run(['ffmpeg','-v','error','-i',f,*af,'-ac','1','-ar',str(SR),'-f','f32le','-'],capture_output=True,check=True).stdout
     return np.frombuffer(raw,dtype=np.float32).astype(np.float64)
 def env(x,ms=2):
@@ -62,12 +63,12 @@ def pairs_from(name, denoise=False, single=True, at=None, gap=45):
     for s in segs:
         d,u=(s[:int(at*SR)],s[int(at*SR)-48:]) if at else split_pair(s,gap); out.append((finish(d), finish(u) if u is not None else None))
     return out
-def save_pack(pid, meta, variants, special, mouse=None):
+def save_pack(pid, meta, variants, special, mouse=None, per=False):
     allys=[y for d,u in variants for y in (d,u) if y is not None]+[y for d,u in special.values() for y in (d,u) if y is not None]
     g0=norm_gain([d for d,u in variants])
     pj=dict(meta); pj['default']=[]; pj['keys']={}
     for i,(d,u) in enumerate(variants):
-        g=g0
+        g=min(TARGET*0.95/np.abs(d).max(), g0*4) if per else g0
         write(f'{OUT}/{pid}/v{i}-down.wav',d,g); ent={'down':f'v{i}-down.wav'}
         if u is not None: write(f'{OUT}/{pid}/v{i}-up.wav',u,g); ent['up']=f'v{i}-up.wav'
         pj['default'].append(ent)
@@ -101,7 +102,7 @@ ps=pairs_from('523768')[0]; raw=load(fs('523768'))
 pd,pu=split_pair(raw)
 v=[ps]+[(finish(resamp(pd,f)),finish(resamp(pu,f))) for f in (1.035,0.97)]
 big=(finish(resamp(pd,0.9)),finish(resamp(pu,0.92)))
-sp=pairs_from('421582',True,at=0.09)[0]
+sp=(finish(resamp(pd,0.84)),finish(resamp(pu,0.86)))
 special={SPACE:sp, ENTER:big, BKSP:big}; special.update({m:big for m in MODS})
 save_pack('clicky-blue',{'name':'Clicky Blue','description':'Cherry MX Blue: sharp click on press, crisp release'},v,special)
 # 3 Tactile Brown (Foxfire- press+release, Capt.Jack large key; CC0)
@@ -117,7 +118,7 @@ lowest=xs[0]
 special={SPACE:(finish(resamp(lowest[0],0.88)),finish(resamp(lowest[1],0.9))),ENTER:(finish(resamp(xs[1][0],0.93)),finish(resamp(xs[1][1],0.95))),BKSP:(finish(resamp(xs[2][0],0.95)),xs[2][1])}
 save_pack('soft-tactile',{'name':'Soft Tactile','description':'Softer, deeper tactile board with clear release'},xs,special)
 # 5 Deep Clear (humi74 MX Clear, CC0)
-hs=[p for p in pairs_from('412926',True,False) if p[1] is not None]
+hs=[p for p in pairs_from('412926',30,False) if p[1] is not None]
 hs=[p for p in hs if 0.06<len(p[0])/SR<0.25 and len(p[1])/SR<0.25]
 hs=sorted(hs,key=lambda p:-np.abs(p[0]).max())[:8]
 special={SPACE:(finish(resamp(hs[0][0],0.9)),finish(resamp(hs[0][1],0.92)))}
@@ -129,3 +130,60 @@ write(f'{OUT}/_mouse/down.wav',md,gm)
 if mu is not None: write(f'{OUT}/_mouse/up.wav',mu,gm)
 report['mouse']=(len(md)/SR, None if mu is None else len(mu)/SR)
 print(json.dumps(report,indent=0,default=str))
+
+# ------------------------------------------------------------------ v2 packs (2026-11-03)
+sys.path.insert(0, SRC)
+from slicer import slice_dense
+def dense_pack(name, denoise=False, n_down=8, n_up=6, region=None, maxms=150, clean=0.15):
+    x=load(fs(name),denoise)
+    if region: x=x[int(region[0]*SR):int(region[1]*SR)]
+    sl=[c for c in slice_dense(x,maxms) if c['clean']<clean and c['len']>0.07]
+    if not sl: raise SystemExit('no slices '+name)
+    pk=np.array([c['peak'] for c in sl]); med=np.median(pk)
+    downs=sorted([c for c in sl if c['peak']>=np.percentile(pk,55)], key=lambda c:c['clean'])[:n_down]
+    dmed=np.median([c['peak'] for c in downs])
+    ups=sorted([c for c in sl if 0.18*dmed<=c['peak']<=0.55*dmed], key=lambda c:c['clean'])[:n_up]
+    D=[finish(x[c['s']:c['t']],maxms) for c in downs]
+    U=[finish(x[c['s']:c['t']],100) for c in ups]
+    return [(d, U[i%len(U)] if U else None) for i,d in enumerate(D)]
+import sys as _s
+# Linear: Keychron K10 (linear switches), Sadiquecat + Mediasaur, CC0
+lin=[p for p in pairs_from('789628',False,False) if p[1] is not None]
+lin=[p for p in lin if 0.05<len(p[0])/SR<0.26]
+lin=sorted(lin,key=lambda p:-np.abs(p[0]).max())[:8]
+lin.append(pairs_from('788932')[0])
+ent=finish(load(fs('789629')),200); spc=finish(load(fs('789630')),220)
+save_pack('linear',{'name':'Smooth Linear','description':'Keychron linear switches: smooth, even, rounded bottom-out'},lin,
+          {SPACE:(spc,lin[0][1]),ENTER:(ent,lin[1][1]),BKSP:(ent,lin[1][1])},per=True)
+# Box Jade: Kailh Box Jade, el_boss, CC0
+bj_iso=[p for p in pairs_from('643558',False,False) if p[1] is not None and len(p[0])/SR>0.05][:4]
+bj=bj_iso+dense_pack('643558',False,6,4,(4.5,10.3),clean=0.3)
+save_pack('box-jade',{'name':'Box Jade','description':'Kailh Box Jade: thick, loud click bar, sharp and snappy'},bj,
+          {SPACE:(finish(resamp(bj[0][0],0.86)),None if bj[0][1] is None else finish(resamp(bj[0][1],0.88))),
+           ENTER:(finish(resamp(bj[1][0],0.92)),bj[1][1]),BKSP:(finish(resamp(bj[1][0],0.92)),bj[1][1])},per=True)
+# Vintage Alps: Apple M0118 with ALPS SKCM Orange, robni7, CC0
+al=dense_pack('680714',False,8,6)
+save_pack('vintage-alps',{'name':'Vintage Alps','description':'1987 Apple keyboard, ALPS SKCM Orange: crunchy, dry, retro'},al,
+          {SPACE:(finish(resamp(al[0][0],0.86)),al[0][1]),ENTER:(finish(resamp(al[1][0],0.92)),al[1][1])},per=True)
+# Topre: HHKB Professional Hybrid, grcekh, CC0
+tp=dense_pack('546164',22,8,6)
+save_pack('topre',{'name':'Topre','description':'HHKB with Topre domes: muted, rounded, cushioned thock'},tp,
+          {SPACE:(finish(resamp(tp[0][0],0.85)),tp[0][1]),ENTER:(finish(resamp(tp[1][0],0.92)),tp[1][1])},per=True)
+# Typewriter: BryanSaraiva Typewriter Key Press 01-06 (CC-BY 4.0); spacebar: magedu (CC-BY 4.0)
+tw=[]
+for n in ('820348','820349','820350','820351','820352','820353'):
+    x=load(fs(n)); d,u=split_pair(x,90)
+    tw.append((finish(d,200), finish(u,140) if u is not None else None))
+sp=[p for p in pairs_from('319944',False,False)]
+sp=sorted(sp,key=lambda p:-np.abs(p[0]).max())
+twsp=sp[0] if sp else (finish(resamp(tw[0][0],0.8)),None)
+save_pack('typewriter',{'name':'Typewriter','description':'Vintage manual typewriter: dry wooden tick and typebar return'},tw,
+          {SPACE:twsp,ENTER:(finish(resamp(tw[2][0],0.9),200),tw[2][1])})
+# Laptop: MacBook Pro 2016 butterfly keys, kijjaz, CC0; spacebar: Apple keyboard, BockelSound, CC-BY 4.0
+lp=dense_pack('407514',False,8,6,None,120)
+asp=[p for p in pairs_from('489383',24,False) if p[1] is not None]
+asp=sorted(asp,key=lambda p:-np.abs(p[0]).max())
+lspace=asp[0] if asp else (finish(resamp(lp[0][0],0.85)),lp[0][1])
+save_pack('laptop',{'name':'Laptop','description':'MacBook low-travel keys: quiet, flat, papery tap'},lp,
+          {SPACE:lspace,ENTER:(finish(resamp(lp[1][0],0.93)),lp[1][1])},per=True)
+print(json.dumps({k:(v if isinstance(v,str) else len(v.get('variants',[])) if isinstance(v,dict) else v) for k,v in report.items()},default=str))

@@ -23,7 +23,7 @@ def list_packs():
         with open(pj) as f:
             meta = json.load(f)
         out.append({"id": pid, "name": meta.get("name", pid), "description": meta.get("description", "")})
-    return out
+    return sorted(out, key=lambda p: p["name"].lower())
 
 
 def tilt(y, tone):

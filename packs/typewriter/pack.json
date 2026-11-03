@@ -1,0 +1,35 @@
+{
+ "name": "Typewriter",
+ "description": "Vintage manual typewriter: dry wooden tick and typebar return",
+ "default": [
+  {
+   "down": "v0-down.wav",
+   "up": "v0-up.wav"
+  },
+  {
+   "down": "v1-down.wav"
+  },
+  {
+   "down": "v2-down.wav",
+   "up": "v2-up.wav"
+  },
+  {
+   "down": "v3-down.wav"
+  },
+  {
+   "down": "v4-down.wav"
+  },
+  {
+   "down": "v5-down.wav"
+  }
+ ],
+ "keys": {
+  "57": {
+   "down": "k57-down.wav"
+  },
+  "28": {
+   "down": "k28-down.wav",
+   "up": "k28-up.wav"
+  }
+ }
+}

@@ -15,8 +15,7 @@ commercial product are used.
 
 ## Clicky Blue (`packs/clicky-blue`)
 - "Single Mechanical Keyboard Tap.wav" by Professor-Syntax, https://freesound.org/people/Professor-Syntax/sounds/523768/ — **CC0 1.0**
-  (normal keys; enter, backspace and modifiers are a 0.9x pitch copy).
-- "spacebarKey.wav" by UberBosser, https://freesound.org/people/UberBosser/sounds/421582/ — **CC0 1.0** (spacebar).
+  (normal keys; enter, backspace and modifiers are a 0.9x pitch copy; spacebar is a 0.84x pitch copy).
 
 ## Tactile Brown (`packs/tactile-brown`)
 - "Keyboard - Press down" by Foxfire-, https://freesound.org/people/Foxfire-/sounds/570754/ — **CC0 1.0** (press; two variants are ±4 % pitch copies).
@@ -35,4 +34,41 @@ commercial product are used.
 - "computer mouse click" by florianreichelt, https://freesound.org/people/florianreichelt/sounds/683099/ — **CC0 1.0**
   (right and middle buttons are slight pitch copies).
 
+## Smooth Linear (`packs/linear`) — added 2026-11-03
+- "Keychron k10 A to + individual keys" by Sadiquecat, https://freesound.org/people/Sadiquecat/sounds/789628/ — **CC0 1.0** (normal keys, press + release).
+- "Keychron k10 Enter" by Sadiquecat, https://freesound.org/people/Sadiquecat/sounds/789629/ — **CC0 1.0** (enter, backspace).
+- "Keychron k10 space_bar" by Sadiquecat, https://freesound.org/people/Sadiquecat/sounds/789630/ — **CC0 1.0** (spacebar).
+- "Key_Press" by Mediasaur, https://freesound.org/people/Mediasaur/sounds/788932/ — **CC0 1.0** (one extra Keychron K10 variant).
+
+## Box Jade (`packs/box-jade`) — added 2026-11-03
+- "Kailh Box Jade Switches Sound" by el_boss, https://freesound.org/people/el_boss/sounds/643558/ — **CC0 1.0**
+  (4 isolated press/release pairs; space/enter/backspace are lower-pitched copies).
+
+## Vintage Alps (`packs/vintage-alps`) — added 2026-11-03
+- "Typing on Apple Standard Keyboard (ALPS SKCM Orange)" by robni7, https://freesound.org/people/robni7/sounds/680714/ — **CC0 1.0**
+  (Apple M0118, 1987; individual keystrokes sliced from the typing demo; space/enter are lower-pitched copies).
+
+## Topre (`packs/topre`) — added 2026-11-03
+- "Keyboard Typing 7 (HHKB, Topre)" by grcekh, https://freesound.org/people/grcekh/sounds/546164/ — **CC0 1.0**
+  (HHKB Professional Hybrid; keystrokes sliced from the recording with light noise reduction; space/enter are lower-pitched copies).
+
+## Typewriter (`packs/typewriter`) — added 2026-11-03
+- "Typewriter Key Press 01" to "06" by BryanSaraiva, https://freesound.org/people/BryanSaraiva/sounds/820348/ through
+  https://freesound.org/people/BryanSaraiva/sounds/820353/ — **CC BY 4.0** (https://creativecommons.org/licenses/by/4.0/).
+  Attribution: "Typewriter Key Press 01–06" by BryanSaraiva (freesound.org), licensed CC BY 4.0; trimmed and split into press/return.
+- "typewriter_electric_spacebar_several_times.wav" by magedu, https://freesound.org/people/magedu/sounds/319944/ — **CC BY 4.0**
+  (spacebar). Attribution: by magedu (freesound.org), CC BY 4.0; one press sliced out and level-matched.
+
+## Laptop (`packs/laptop`) — added 2026-11-03
+- "MacBook 2016 trackpad and keyboard sound" by kijjaz, https://freesound.org/people/kijjaz/sounds/407514/ — **CC0 1.0**
+  (low-travel butterfly keys; keystrokes sliced from the recording).
+- "Tippen - Leertaste drücken, Apple.wav" by BockelSound, https://freesound.org/people/BockelSound/sounds/489383/ — **CC BY 4.0**
+  (spacebar). Attribution: by BockelSound (freesound.org), CC BY 4.0; one press/release sliced out, noise-reduced, level-matched.
+
+## Changes to earlier packs (2026-11-03)
+- Clicky Blue: the phone-recorded spacebar (UberBosser) was replaced with a lower-pitched copy of the Professor-Syntax MX Blue
+  recording so the pack is one consistent, clean source. UberBosser's file is no longer used.
+- Deep Clear: stronger noise reduction and a gentle noise gate on the humi74 recording to remove background hiss.
+
 CC0 = public domain dedication, no attribution required (credited here anyway).
+CC BY 4.0 = free to use and modify with attribution; the attributions above satisfy it for personal use.

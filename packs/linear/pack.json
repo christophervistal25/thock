@@ -1,0 +1,56 @@
+{
+ "name": "Smooth Linear",
+ "description": "Keychron linear switches: smooth, even, rounded bottom-out",
+ "default": [
+  {
+   "down": "v0-down.wav",
+   "up": "v0-up.wav"
+  },
+  {
+   "down": "v1-down.wav",
+   "up": "v1-up.wav"
+  },
+  {
+   "down": "v2-down.wav",
+   "up": "v2-up.wav"
+  },
+  {
+   "down": "v3-down.wav",
+   "up": "v3-up.wav"
+  },
+  {
+   "down": "v4-down.wav",
+   "up": "v4-up.wav"
+  },
+  {
+   "down": "v5-down.wav",
+   "up": "v5-up.wav"
+  },
+  {
+   "down": "v6-down.wav",
+   "up": "v6-up.wav"
+  },
+  {
+   "down": "v7-down.wav",
+   "up": "v7-up.wav"
+  },
+  {
+   "down": "v8-down.wav",
+   "up": "v8-up.wav"
+  }
+ ],
+ "keys": {
+  "57": {
+   "down": "k57-down.wav",
+   "up": "k57-up.wav"
+  },
+  "28": {
+   "down": "k28-down.wav",
+   "up": "k28-up.wav"
+  },
+  "14": {
+   "down": "k14-down.wav",
+   "up": "k14-up.wav"
+  }
+ }
+}
