@@ -4,6 +4,20 @@ Personal mechanical-keyboard sound app for Ubuntu (X11). Plays a key-down and ke
 plus optional mouse clicks, panned left/right by key position, with subtle natural variation and a
 thock <-> clack tone control. Lives in the system tray.
 
+## Install
+
+Needs Ubuntu (or another Debian-based Linux) on an X11 session; check with `echo $XDG_SESSION_TYPE`.
+
+```
+sudo apt install git
+git clone https://github.com/christophervistal25/thock ~/Projects/thock
+cd ~/Projects/thock && ./install.sh
+bin/thock
+```
+
+`install.sh` installs any missing system packages (asks for your password), sets up Thock,
+adds it to the app menu and turns on start at login. Safe to re-run.
+
 - Open settings: app menu -> **Thock**, or `bin/thock --settings`, or tray icon -> Settings…
 - Start: `bin/thock` (starts automatically at login)
 - Quit: tray -> Quit Thock, or `bin/thock --quit`
