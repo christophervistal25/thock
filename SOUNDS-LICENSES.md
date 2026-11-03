@@ -76,3 +76,17 @@ attributions as listed above.
 
 CC0 = public domain dedication, no attribution required (credited here anyway).
 CC BY 4.0 = free to use and modify with attribution; the attributions above satisfy it for personal use.
+
+## Thocky (`packs/thocky`) — added 2026-11-03
+- "Thocky Keyboard Typing (No Spaces)" by aliyahb, https://freesound.org/people/aliyahb/sounds/869165/ — **CC0 1.0**
+  (keystrokes sliced from the typing recording with light noise reduction; space/enter/backspace are lower-pitched copies).
+
+## Rainy 75 (`packs/rainy-75`) — added 2026-11-03
+- "Typing on a rainy 75" by Techrul, https://freesound.org/people/Techrul/sounds/815614/ — **CC0 1.0**
+  (keystrokes sliced from the typing recording, low rumble filtered, light noise reduction; space/enter/backspace are lower-pitched copies).
+
+## Lubed Tactile (`packs/lubed-tactile`) — added 2026-11-03
+- "Mechanical keyboard typing sounds" by Reina0613, https://freesound.org/people/Reina0613/sounds/709460/ — **CC0 1.0**
+  (ikki68 Aurora with hand-lubed WS Brown switches; keystrokes sliced from the typing recording; space/enter/backspace are lower-pitched copies).
+
+Thocky, Rainy 75 and Lubed Tactile are built by `tools/build_calm_packs.py`, which downloads the previews itself.

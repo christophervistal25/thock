@@ -86,5 +86,41 @@ class MixerTests(unittest.TestCase):
         self.assertEqual(len(m._pending), 0)
 
 
+class PackTests(unittest.TestCase):
+    """Pack loading from a throwaway packs folder (no real packs touched)."""
+
+    def _make_pack(self, root, pid, meta, files):
+        import json, wave
+        d = os.path.join(root, pid)
+        os.makedirs(d)
+        for fn, n in files.items():
+            with wave.open(os.path.join(d, fn), "wb") as w:
+                w.setnchannels(1); w.setsampwidth(2); w.setframerate(48000)
+                w.writeframes((np.ones(n) * 1000).astype("<i2").tobytes())
+        with open(os.path.join(d, "pack.json"), "w") as f:
+            json.dump(meta, f)
+
+    def _packs_dir(self):
+        root = tempfile.mkdtemp()
+        self._make_pack(root, "_mouse", {}, {"down.wav": 100, "up.wav": 110})
+        self._make_pack(root, "shared", {"name": "Shared", "default": [{"down": "d.wav"}]}, {"d.wav": 200})
+        self._make_pack(root, "own", {"name": "Own", "private": True, "default": [{"down": "d.wav"}],
+                                      "mouse": {"down": "md.wav", "up": "mu.wav"}},
+                        {"d.wav": 200, "md.wav": 300, "mu.wav": 310})
+        return root
+
+    def test_pack_uses_own_mouse_clicks_else_shared(self):
+        from thock import packs
+        with mock.patch.object(packs, "PACKS_DIR", self._packs_dir()):
+            self.assertEqual([len(s) for s in packs.Pack("shared").mouse], [100, 110])
+            self.assertEqual([len(s) for s in packs.Pack("own").mouse], [300, 310])
+
+    def test_private_flag_listed(self):
+        from thock import packs
+        with mock.patch.object(packs, "PACKS_DIR", self._packs_dir()):
+            flags = {p["id"]: p["private"] for p in packs.list_packs()}
+        self.assertEqual(flags, {"own": True, "shared": False})
+
+
 if __name__ == "__main__":
     unittest.main()

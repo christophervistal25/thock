@@ -15,7 +15,7 @@ Every key you press plays a real switch recording. It lives in your tray and sta
 
 ## Features
 
-- **11 sound packs** from real recordings: Buckling Spring (IBM Model M), Clicky Blue, Tactile Brown, Soft Tactile, Deep Clear, Smooth Linear, Box Jade, Topre, Vintage Alps, Typewriter and Laptop.
+- **14 sound packs** from real recordings: Buckling Spring (IBM Model M), Clicky Blue, Tactile Brown, Soft Tactile, Deep Clear, Smooth Linear, Box Jade, Topre, Vintage Alps, Typewriter, Laptop, and three calm, deep-sounding packs: Thocky, Rainy 75 and Lubed Tactile.
 - **Press and release sounds**, with their own samples for Space, Enter and Backspace where the recording has them.
 - **Tone control** from deep "thock" to bright "clack".
 - **Spatial audio**: left-hand keys play on the left speaker, right-hand keys on the right.
