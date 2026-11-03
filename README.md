@@ -185,4 +185,4 @@ The Buckling Spring pack comes from [bucklespring](https://github.com/zevv/buckl
 
 - Run the tests: `.venv/bin/python -m unittest discover -s tests -v`
 - Rebuild the sound packs from their sources: `tools/build_packs.py` (needs the source downloads listed in SOUNDS-LICENSES.md)
-- The landing page lives in `docs/` and is served by GitHub Pages. Its in-browser typing test (`docs/typing.js`) plays 32 kHz copies of the packs from `docs/assets/packs/`; rebuild them after changing a pack with `.venv/bin/python tools/build_web_packs.py`.
+- The landing page is plain HTML in `docs/index.html`, served by GitHub Pages.
