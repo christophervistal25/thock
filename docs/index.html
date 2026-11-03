@@ -5,198 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thock: mechanical keyboard sounds for Linux</title>
 <meta name="description" content="Thock plays real mechanical keyboard sounds as you type on Ubuntu and other Linux desktops. 14 sound packs, mouse clicks, tone control, spatial audio, about 15 ms latency. Nothing you type is stored or sent.">
-<meta name="color-scheme" content="light dark">
-<meta property="og:title" content="Thock: mechanical keyboard sounds for Linux">
-<meta property="og:description" content="Real switch recordings for every key you press. 14 packs, tray controls, about 15 ms latency.">
-<meta property="og:image" content="https://christophervistal25.github.io/thock/assets/screen-packs-light.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="#top"><img src="favicon.svg" alt="" width="28" height="28"><span>Thock</span></a>
-    <nav aria-label="Sections">
-      <a href="#tt">Try it</a>
-      <a href="#features">Features</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#install">Install</a>
-      <a href="https://github.com/christophervistal25/thock">GitHub</a>
-    </nav>
-  </div>
-</header>
+<body style="font-family: Arial, 'Liberation Sans', Helvetica, sans-serif">
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <img class="hero-icon" src="favicon.svg" alt="Thock icon" width="72" height="72">
-        <h1>Thock</h1>
-        <p class="pitch">Mechanical keyboard sounds for your Linux desktop.</p>
-        <p class="lede">Every key you press plays a real switch recording, from a buckling-spring IBM Model M to Topre, Box Jade and a vintage typewriter. It lives in your tray and stays out of the way.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Download for Linux
-          </a>
-          <a class="btn btn-secondary" href="https://github.com/christophervistal25/thock">View on GitHub</a>
-        </div>
-        <p class="meta">Free · Ubuntu / Debian · X11 session · <a href="https://github.com/christophervistal25/thock/releases/latest">Release notes</a></p>
-      </div>
-      <div class="tt" id="tt">
-        <div class="tt-head">
-          <div>
-            <h2 class="tt-title">Try it right here</h2>
-            <p class="tt-sub">Type the line below and hear Thock's own samples. Esc restarts.</p>
-          </div>
-          <dl class="tt-stats">
-            <div><dt>WPM</dt><dd data-stat="wpm">0</dd></div>
-            <div><dt>Accuracy</dt><dd data-stat="acc">100%</dd></div>
-            <div><dt>Time</dt><dd data-stat="time">0.0s</dd></div>
-          </dl>
-        </div>
-        <div class="tt-area">
-          <p class="tt-text" aria-hidden="true"></p>
-          <input class="tt-input" type="text" aria-label="Typing test: type the sentence shown" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done">
-          <p class="tt-hint"><span class="tt-hint-key">Click here and start typing</span><span class="tt-hint-touch">Tap here to type. Sounds work best with a physical keyboard.</span></p>
-          <p class="tt-doneline">Done. Press Enter or choose New text for another line.</p>
-        </div>
-        <p class="tt-status" role="status" hidden></p>
-        <div class="tt-actions">
-          <button type="button" class="tt-btn" data-act="restart">Restart</button>
-          <button type="button" class="tt-btn" data-act="next">New text</button>
-        </div>
-        <form class="tt-settings" aria-label="Sound settings" onsubmit="return false">
-          <div class="tt-row tt-row-pack">
-            <label for="tt-pack">Sound pack</label>
-            <select id="tt-pack" name="pack"><option value="tactile-brown">Tactile Brown</option></select>
-            <p class="tt-desc"></p>
-          </div>
-          <div class="tt-row">
-            <label for="tt-vol">Volume</label>
-            <input id="tt-vol" type="range" name="volume" min="0" max="1" step="0.01">
-          </div>
-          <div class="tt-row">
-            <label for="tt-tone">Tone</label>
-            <div class="tt-tone"><span>Thock</span><input id="tt-tone" type="range" name="tone" min="-1" max="1" step="0.05"><span>Clack</span></div>
-          </div>
-          <div class="tt-toggles">
-            <label class="tt-switch"><input type="checkbox" name="mouse"><span>Mouse clicks</span></label>
-            <label class="tt-switch"><input type="checkbox" name="spatial"><span>Spatial audio</span></label>
-            <label class="tt-switch"><input type="checkbox" name="variation"><span>Natural variation</span></label>
-            <label class="tt-switch"><input type="checkbox" name="repeat"><span>Sound on key repeat</span></label>
-          </div>
-          <button type="button" class="tt-reset" data-act="reset">Reset to app defaults</button>
-        </form>
-      </div>
-    </div>
-  </section>
+<h1>Thock</h1>
+<p><b>Mechanical keyboard sounds for your Linux desktop.</b></p>
+<p>Every key you press plays a real switch recording, from a buckling-spring IBM Model M to Topre, Box Jade and a vintage typewriter. It lives in your tray and stays out of the way.</p>
+<p>
+  <a href="https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz"><b>Download for Linux</b></a> |
+  <a href="https://github.com/christophervistal25/thock">Source on GitHub</a> |
+  <a href="https://github.com/christophervistal25/thock/releases/latest">Release notes</a>
+</p>
+<p>Free. Ubuntu / Debian. X11 session.</p>
 
-  <section class="install-strip" aria-label="Quick install">
-    <div class="wrap">
-      <p class="label">Install in one line</p>
-      <div class="cmd">
-        <code id="cmd">cd ~ &amp;&amp; wget -qO- https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz | tar xz &amp;&amp; cd thock &amp;&amp; ./install.sh &amp;&amp; bin/thock</code>
-        <button type="button" class="copy" data-copy="cmd" aria-label="Copy install command">Copy</button>
-      </div>
-    </div>
-  </section>
+<hr>
 
-  <section id="features" class="section">
-    <div class="wrap">
-      <h2>Small app, carefully tuned</h2>
-      <p class="section-lede">Everything you need to make typing sound good, and nothing you don't.</p>
-      <div class="features">
-        <article class="card"><h3>14 sound packs</h3><p>Buckling Spring, Clicky Blue, Tactile Brown, Smooth Linear, Box Jade, Topre, Typewriter, plus calm, deep packs like Thocky and Rainy 75. Try each one from the settings window.</p></article>
-        <article class="card"><h3>Press and release</h3><p>Separate key-down and key-up sounds, with their own samples for Space, Enter and Backspace where the recording has them.</p></article>
-        <article class="card"><h3>Thock or clack</h3><p>One tone slider shifts every pack from deep and soft to bright and crisp.</p></article>
-        <article class="card"><h3>Spatial audio</h3><p>Keys on the left of your keyboard sound from the left speaker, keys on the right from the right.</p></article>
-        <article class="card"><h3>Mouse clicks</h3><p>Optional click sounds for the left, right and middle buttons.</p></article>
-        <article class="card"><h3>Key repeat, your call</h3><p>Hold a key for one sound, or turn on sound on key repeat for a click on every auto-repeat.</p></article>
-        <article class="card"><h3>Tray controls</h3><p>Switch packs, volume, tone and every toggle from the tray menu. Starts at login if you want it to.</p></article>
-        <article class="card"><h3>About 15 ms latency</h3><p>Samples are preloaded and mixed in a low-latency audio stream, so the sound lands with the keystroke.</p></article>
-        <article class="card card-wide"><h3>Private by design</h3><p>Thock only looks at which key went down or up to choose and place a sound, then forgets it. Nothing you type is logged, stored or sent, and the app makes no network connections.</p></article>
-      </div>
-    </div>
-  </section>
+<h2>Inspired by Hayyoth</h2>
+<p>Thock was inspired by <a href="https://www.youtube.com/@hayyoth-org">Hayyoth</a>, a developer who sits down and writes code by hand, no AI, one keystroke at a time, in videos like
+<a href="https://www.youtube.com/watch?v=VBORE_zH5oc">"No AI - Just pure JS hand coding to relax"</a>.
+The calm, steady rhythm of the keys in those videos is the feeling Thock tries to bring to your own desktop: typing that sounds good and helps you settle into your work.</p>
+<p>Thank you, Hayyoth, for showing how relaxing it can be to simply build things. If you like Thock, go watch and support the channel.</p>
+<p><small>Thock is an independent project and is not affiliated with or endorsed by Hayyoth. Thock does not include sounds from Hayyoth's videos.</small></p>
 
-  <section id="screenshots" class="section section-tint">
-    <div class="wrap">
-      <h2>Native on GNOME, light or dark</h2>
-      <p class="section-lede">The settings window follows your system theme.</p>
-      <div class="shots">
-        <figure><img src="assets/screen-packs-light.png" width="798" height="686" loading="lazy" alt="Settings window in light mode with the sound pack list"><figcaption>Pick a pack and preview it with Try.</figcaption></figure>
-        <figure><img src="assets/screen-packs-dark.png" width="798" height="686" loading="lazy" alt="Settings window in dark mode with the sound pack list"><figcaption>Dark mode follows your system setting.</figcaption></figure>
-        <figure><img src="assets/screen-behavior-light.png" width="798" height="686" loading="lazy" alt="Behavior settings: key release sounds, natural variation, sound on key repeat, spatial audio and mouse clicks"><figcaption>Behavior: release sounds, variation, key repeat, spatial audio, mouse clicks.</figcaption></figure>
-        <figure><img src="assets/screen-tone-dark.png" width="798" height="686" loading="lazy" alt="Tone slider from thock to clack in dark mode"><figcaption>One slider from thock to clack.</figcaption></figure>
-      </div>
-    </div>
-  </section>
+<hr>
 
-  <section id="install" class="section">
-    <div class="wrap two-col">
-      <div>
-        <h2>Requirements</h2>
-        <ul class="ticks">
-          <li>Ubuntu 22.04 or newer, or another Debian-based Linux</li>
-          <li>An <strong>X11</strong> session (on Ubuntu, choose “Ubuntu on Xorg” at the login screen). Check with <code>echo $XDG_SESSION_TYPE</code></li>
-          <li>Speakers or headphones, ideally stereo for spatial audio</li>
-          <li>About 15 MB of disk space</li>
-        </ul>
-        <p class="note">Wayland sessions aren't supported yet: Wayland doesn't let apps hear system-wide key presses.</p>
-      </div>
-      <div>
-        <h2>Install</h2>
-        <ol class="steps">
-          <li><span>Download <a href="https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz">thock-linux.tar.gz</a> and extract it in your home folder, or clone the repository:
-            <code class="block">git clone https://github.com/christophervistal25/thock ~/thock</code></span></li>
-          <li><span>Run the installer. It installs any missing system packages (asks for your password once), adds Thock to the app menu and turns on start at login:
-            <code class="block">cd ~/thock &amp;&amp; ./install.sh</code></span></li>
-          <li><span>Start it from the app menu, or with <code>bin/thock</code>. Look for the keycap icon in the top bar.</span></li>
-        </ol>
-        <p class="note">Something not working? The README has a <a href="https://github.com/christophervistal25/thock#troubleshooting">troubleshooting guide</a> covering the common cases.</p>
-      </div>
-    </div>
-  </section>
+<h2>Install</h2>
+<p>One line, in a terminal:</p>
+<pre>cd ~ &amp;&amp; wget -qO- https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz | tar xz &amp;&amp; cd thock &amp;&amp; ./install.sh &amp;&amp; bin/thock</pre>
+<p>Or clone the repository:</p>
+<pre>git clone https://github.com/christophervistal25/thock ~/thock
+cd ~/thock &amp;&amp; ./install.sh</pre>
+<p>The installer installs any missing system packages (asks for your password once), adds Thock to the app menu and turns on start at login. Start it from the app menu or with <code>bin/thock</code>.</p>
 
-  <section id="credits" class="section section-tint">
-    <div class="wrap">
-      <h2>Sound credits</h2>
-      <p class="section-lede">Every pack is a genuine recording shared under a free license. Most are CC0 (public domain). These need attribution under CC BY 4.0:</p>
-      <ul class="credits">
-        <li>“Typewriter Key Press 01–06” by <a href="https://freesound.org/people/BryanSaraiva/">BryanSaraiva</a> on Freesound, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Trimmed and split into press and return.</li>
-        <li>“typewriter_electric_spacebar_several_times.wav” by <a href="https://freesound.org/people/magedu/sounds/319944/">magedu</a> on Freesound, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. One press sliced out and level-matched.</li>
-        <li>“Tippen - Leertaste drücken, Apple.wav” by <a href="https://freesound.org/people/BockelSound/sounds/489383/">BockelSound</a> on Freesound, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. One press sliced out, noise-reduced and level-matched.</li>
-        <li>The Buckling Spring pack comes from <a href="https://github.com/zevv/bucklespring">bucklespring</a> by Ico Doornekamp, GPL-2.0.</li>
-      </ul>
-      <p>The typing test on this page plays lightweight 32 kHz copies of the same recordings, under the same licenses.</p>
-      <p>Full list of sources, authors and licenses: <a href="https://github.com/christophervistal25/thock/blob/master/SOUNDS-LICENSES.md">SOUNDS-LICENSES.md</a>.</p>
-    </div>
-  </section>
-</main>
+<h3>Requirements</h3>
+<ul>
+  <li>Ubuntu 22.04 or newer, or another Debian-based Linux</li>
+  <li>An X11 session (on Ubuntu, choose "Ubuntu on Xorg" at the login screen). Check with <code>echo $XDG_SESSION_TYPE</code></li>
+  <li>Speakers or headphones, ideally stereo</li>
+  <li>About 15 MB of disk space</li>
+</ul>
+<p>Wayland isn't supported yet: it doesn't let apps hear system-wide key presses.</p>
+<p>Something not working? See the <a href="https://github.com/christophervistal25/thock#troubleshooting">troubleshooting guide</a>.</p>
 
-<footer class="footer">
-  <div class="wrap footer-inner">
-    <span class="brand small"><img src="favicon.svg" alt="" width="20" height="20"> Thock</span>
-    <span>Made for Linux desktops. <a href="https://github.com/christophervistal25/thock">Source on GitHub</a> · <a href="https://github.com/christophervistal25/thock/issues">Report a problem</a></span>
-  </div>
-</footer>
+<hr>
 
-<script src="typing.js" defer></script>
-<script>
-document.querySelectorAll('button.copy').forEach(function (b) {
-  b.addEventListener('click', function () {
-    var t = document.getElementById(b.dataset.copy).textContent;
-    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () {
-      b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600);
-    }, function () {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById(b.dataset.copy));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-    });
-  });
-});
-</script>
+<h2>Sound packs</h2>
+<p>14 packs, all real recordings. Pick one from the tray menu or the settings window.</p>
+
+<h3>Calm and deep (new)</h3>
+<ul>
+  <li><b>Thocky</b>: deep, muffled thock with a soft, rounded bottom-out. The calmest pack.</li>
+  <li><b>Rainy 75</b>: Rainy 75 aluminium board. Deep, rounded, marbly thock.</li>
+  <li><b>Lubed Tactile</b>: ikki68 Aurora with hand-lubed WS Brown switches. Warm, smooth tactile bump.</li>
+</ul>
+
+<h3>Classic</h3>
+<ul>
+  <li><b>Buckling Spring</b>: IBM Model M, every key sampled.</li>
+  <li><b>Clicky Blue</b>: Cherry MX Blue. Sharp click on press, crisp release.</li>
+  <li><b>Tactile Brown</b>: Cherry MX Brown, studio-clean press and release.</li>
+  <li><b>Soft Tactile</b>: softer, deeper tactile board with a clear release.</li>
+  <li><b>Deep Clear</b>: Cherry MX Clear. Stiff tactile, deeper thock.</li>
+  <li><b>Smooth Linear</b>: Keychron linear switches. Smooth, even, rounded bottom-out.</li>
+  <li><b>Box Jade</b>: Kailh Box Jade. Thick, loud click bar, sharp and snappy.</li>
+  <li><b>Topre</b>: HHKB with Topre domes. Muted, rounded, cushioned thock.</li>
+  <li><b>Vintage Alps</b>: 1987 Apple keyboard, ALPS SKCM Orange. Crunchy, dry, retro.</li>
+  <li><b>Typewriter</b>: vintage manual typewriter. Dry wooden tick and typebar return.</li>
+  <li><b>Laptop</b>: MacBook low-travel keys. Quiet, flat, papery tap.</li>
+</ul>
+
+<h2>Features</h2>
+<ul>
+  <li><b>Press and release</b> sounds, with their own samples for Space, Enter and Backspace where the recording has them.</li>
+  <li><b>Tone control</b> from deep "thock" to bright "clack".</li>
+  <li><b>Spatial audio</b>: left-hand keys on the left speaker, right-hand keys on the right.</li>
+  <li><b>Mouse clicks</b> for the left, right and middle buttons (optional).</li>
+  <li><b>Sound on key repeat</b> (optional).</li>
+  <li><b>Natural variation</b>: tiny pitch and volume changes so repeated keys don't sound robotic.</li>
+  <li><b>Tray menu and settings window</b> that follow your light or dark theme. Starts at login if you want it to.</li>
+  <li><b>About 15 ms</b> from key press to sound.</li>
+  <li><b>Private</b>: nothing you type is logged, stored or sent. No network connections.</li>
+</ul>
+
+<h2>Screenshot</h2>
+<p><img src="assets/screen-packs-light.png" width="400" alt="Thock settings window with the sound pack list"></p>
+
+<hr>
+
+<h2>Sound credits</h2>
+<p>Thank you to everyone who recorded and shared these sounds. Every pack is a genuine recording under a free license.</p>
+
+<h3>Calm and deep packs (CC0)</h3>
+<ul>
+  <li>Thocky: <a href="https://freesound.org/people/aliyahb/sounds/869165/">"Thocky Keyboard Typing (No Spaces)"</a> by aliyahb</li>
+  <li>Rainy 75: <a href="https://freesound.org/people/Techrul/sounds/815614/">"Typing on a rainy 75"</a> by Techrul</li>
+  <li>Lubed Tactile: <a href="https://freesound.org/people/Reina0613/sounds/709460/">"Mechanical keyboard typing sounds"</a> by Reina0613</li>
+</ul>
+
+<h3>Classic packs (CC0)</h3>
+<ul>
+  <li>Clicky Blue: <a href="https://freesound.org/people/Professor-Syntax/sounds/523768/">"Single Mechanical Keyboard Tap.wav"</a> by Professor-Syntax</li>
+  <li>Tactile Brown: <a href="https://freesound.org/people/Foxfire-/sounds/570754/">"Keyboard - Press down"</a> and <a href="https://freesound.org/people/Foxfire-/sounds/570755/">"Keyboard - Key release"</a> by Foxfire-; <a href="https://freesound.org/people/Capt.Jack/sounds/813210/">"Single_Key_Stroke_Large_Key"</a> by Capt.Jack</li>
+  <li>Soft Tactile: <a href="https://freesound.org/people/Xemptful/sounds/660387/">"Single Key Presses on Mechanical Keyboard"</a> by Xemptful</li>
+  <li>Deep Clear: <a href="https://freesound.org/people/humi74/sounds/412926/">"Mechanical keyboard clicking. Different keys (4)"</a> by humi74</li>
+  <li>Smooth Linear: <a href="https://freesound.org/people/Sadiquecat/sounds/789628/">Keychron K10 recordings</a> by Sadiquecat; <a href="https://freesound.org/people/Mediasaur/sounds/788932/">"Key_Press"</a> by Mediasaur</li>
+  <li>Box Jade: <a href="https://freesound.org/people/el_boss/sounds/643558/">"Kailh Box Jade Switches Sound"</a> by el_boss</li>
+  <li>Vintage Alps: <a href="https://freesound.org/people/robni7/sounds/680714/">"Typing on Apple Standard Keyboard (ALPS SKCM Orange)"</a> by robni7</li>
+  <li>Topre: <a href="https://freesound.org/people/grcekh/sounds/546164/">"Keyboard Typing 7 (HHKB, Topre)"</a> by grcekh</li>
+  <li>Laptop: <a href="https://freesound.org/people/kijjaz/sounds/407514/">"MacBook 2016 trackpad and keyboard sound"</a> by kijjaz</li>
+  <li>Mouse clicks: <a href="https://freesound.org/people/florianreichelt/sounds/683099/">"computer mouse click"</a> by florianreichelt</li>
+</ul>
+
+<h3>Attribution required (CC BY 4.0)</h3>
+<ul>
+  <li>Typewriter: "Typewriter Key Press 01-06" by <a href="https://freesound.org/people/BryanSaraiva/">BryanSaraiva</a> on Freesound, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Trimmed and split into press and return.</li>
+  <li>Typewriter spacebar: "typewriter_electric_spacebar_several_times.wav" by <a href="https://freesound.org/people/magedu/sounds/319944/">magedu</a> on Freesound, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. One press sliced out and level-matched.</li>
+  <li>Laptop spacebar: "Tippen - Leertaste drücken, Apple.wav" by <a href="https://freesound.org/people/BockelSound/sounds/489383/">BockelSound</a> on Freesound, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. One press sliced out, noise-reduced and level-matched.</li>
+</ul>
+
+<h3>GPL-2.0</h3>
+<ul>
+  <li>Buckling Spring: <a href="https://github.com/zevv/bucklespring">bucklespring</a> by Ico Doornekamp, GPL-2.0.</li>
+</ul>
+
+<p>Full list of sources, authors, licenses and edits: <a href="https://github.com/christophervistal25/thock/blob/master/SOUNDS-LICENSES.md">SOUNDS-LICENSES.md</a></p>
+
+<hr>
+<p>Thock. Made for Linux desktops. <a href="https://github.com/christophervistal25/thock/issues">Report a problem</a></p>
+
 </body>
 </html>
