@@ -1,6 +1,7 @@
 """Turns input events into sounds. Holds no history of keys: only which keys are currently held,
 so a held key does not machine-gun, and which release sample belongs to a press."""
 import threading
+import time
 import numpy as np
 
 from .audio import Mixer
@@ -8,6 +9,8 @@ from .keymap import key_x
 from .packs import Pack
 
 MOUSE_PAN = 0.78
+REPEAT_GAIN = 0.85          # repeats a little softer than the first press
+REPEAT_MIN_INTERVAL = 0.025  # never more than 40 repeat sounds per second per key
 MOUSE_PITCH = {1: 1.0, 2: 0.93, 3: 1.07}
 
 
@@ -17,7 +20,7 @@ class Engine:
         self.rng = np.random.default_rng()
         self.mixer = Mixer()
         self.pack = None
-        self._held = {}            # keycode -> release sample (cleared on release)
+        self._held = {}            # keycode -> [down sample, release sample, last sound time] (cleared on release)
         self._held_buttons = set()
         self._lock = threading.Lock()
         self._loading = threading.Lock()
@@ -68,18 +71,28 @@ class Engine:
     def key_down(self, code):
         if not self.cfg["enabled"] or self.pack is None:
             return
+        now = time.monotonic()
+        gain = self._gain()
         with self._lock:
-            if code in self._held:      # auto-repeat or duplicate: one sound per physical press
-                return
-            down, up = self.pack.pick(code, self.rng)
-            self._held[code] = up
+            held = self._held.get(code)
+            if held is not None:
+                # X auto-repeat: KeyPress again without a KeyRelease
+                if not self.cfg["repeat"] or held[0] is None or now - held[2] < REPEAT_MIN_INTERVAL:
+                    return
+                held[2] = now
+                down = held[0]
+                gain *= REPEAT_GAIN
+            else:
+                down, up = self.pack.pick(code, self.rng)
+                self._held[code] = [down, up, now]
         if down is not None:
-            d, g = self._vary(down, self._gain())
+            d, g = self._vary(down, gain)
             self.mixer.play(d, g, self._pan(key_x(code)))
 
     def key_up(self, code):
         with self._lock:
-            up = self._held.pop(code, None)
+            held = self._held.pop(code, None)
+        up = held[1] if held else None
         if up is None or not self.cfg["enabled"] or not self.cfg["release"]:
             return
         d, g = self._vary(up, self._gain())

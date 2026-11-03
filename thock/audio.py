@@ -15,7 +15,8 @@ class Mixer:
         self.last_start_delay = None   # seconds from trigger to first mixed block (for latency test)
         self._stream = None
         self.device = device
-        self.stats = {"callbacks": 0, "underflows": 0}
+        self.stats = {"callbacks": 0, "underflows": 0, "limited_blocks": 0, "max_voices": 0}
+        self._lim = 1.0
 
     def start(self):
         kwargs = dict(samplerate=SR, channels=2, dtype="float32", blocksize=BLOCK,
@@ -67,6 +68,8 @@ class Mixer:
         out.fill(0)
         L = out[:, 0]
         R = out[:, 1]
+        if len(voices) > self.stats["max_voices"]:
+            self.stats["max_voices"] = len(voices)
         alive = []
         for v in voices:
             data, pos = v[0], v[1]
@@ -78,4 +81,15 @@ class Mixer:
             if v[1] < len(data):
                 alive.append(v)
         self._voices[:] = alive
+        # peak limiter: instant attack, ~50 ms release, then a hard safety clip
+        pk = float(np.abs(out).max())
+        target = 0.95 / pk if pk > 0.95 else 1.0
+        if target < self._lim:
+            self._lim = target
+            self.stats["limited_blocks"] += 1
+            out *= target
+        elif self._lim < 1.0:
+            g0 = self._lim
+            self._lim = min(1.0, target, g0 + frames / (SR * 0.05))
+            out *= np.linspace(g0, self._lim, frames, dtype=np.float32)[:, None]
         np.clip(out, -1.0, 1.0, out=out)

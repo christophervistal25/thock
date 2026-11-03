@@ -27,6 +27,22 @@ def self_test(args):
             eng.key_down(c); time.sleep(0.08); eng.key_up(c); time.sleep(0.1)
         for b in (1, 3, 2):
             eng.button(b, True); time.sleep(0.07); eng.button(b, False); time.sleep(0.12)
+    # key-repeat burst: one press, 30 repeats at ~30/s (as X auto-repeat would send), one release
+    cfg.data["repeat"] = True     # in memory only, not saved
+    eng.load_pack(cfg["pack"], cfg["tone"], sync=True)
+    before = eng.mixer.stats["underflows"]
+    eng.key_down(30)
+    worst = 0.0
+    for _ in range(30):
+        time.sleep(0.033)
+        eng.key_down(30)
+        time.sleep(0.004)
+        worst = max(worst, eng.mixer.last_start_delay or 0)
+    eng.key_up(30)
+    time.sleep(0.4)
+    _log(f"repeat burst (30 repeats ~30/s): worst trigger->mix {worst*1000:.2f} ms, "
+         f"max voices {eng.mixer.stats['max_voices']}, limiter blocks {eng.mixer.stats['limited_blocks']}, "
+         f"underflows {eng.mixer.stats['underflows'] - before}")
     delays = eng.mixer.last_start_delay
     _log(f"last trigger->mix delay {delays*1000:.2f} ms; underflows {eng.mixer.stats['underflows']}")
     time.sleep(0.4)

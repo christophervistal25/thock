@@ -137,6 +137,7 @@ class Tray:
         self.mi_mouse = self._check(m, "Mouse Clicks", "mouse")
         self.mi_spatial = self._check(m, "Spatial Audio", "spatial")
         self.mi_var = self._check(m, "Natural Variation", "pitch_variation")
+        self.mi_repeat = self._check(m, "Sound on Key Repeat", "repeat")
         m.append(Gtk.SeparatorMenuItem())
         s = Gtk.MenuItem(label="Settings…")
         s.connect("activate", lambda w: self.app.show_settings())
@@ -157,7 +158,8 @@ class Tray:
         self._sync = True
         c = self.cfg
         for it, k in ((self.mi_enabled, "enabled"), (self.mi_release, "release"), (self.mi_mouse, "mouse"),
-                      (self.mi_spatial, "spatial"), (self.mi_var, "pitch_variation")):
+                      (self.mi_spatial, "spatial"), (self.mi_var, "pitch_variation"),
+                      (self.mi_repeat, "repeat")):
             it.set_active(c[k])
         name = c["pack"]
         for it, v in self.r_pack:
@@ -436,6 +438,7 @@ class SettingsWindow(Gtk.ApplicationWindow):
         for key, title, sub in (
                 ("release", "Key release sounds", "Play a second, softer sound when a key comes back up"),
                 ("pitch_variation", "Natural variation", "Tiny pitch and volume changes so repeated keys sound real"),
+                ("repeat", "Sound on key repeat", "Click again while a held key auto-repeats, slightly softer"),
                 ("spatial", "Spatial audio", "Left-hand keys play on the left, right-hand keys on the right"),
                 ("mouse", "Mouse clicks", "Click sounds for the left, right and middle buttons")):
             sw = Gtk.Switch()

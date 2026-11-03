@@ -12,6 +12,7 @@ DEFAULTS = {
     "spatial": True,
     "release": True,        # play key-up sounds
     "pitch_variation": True,
+    "repeat": False,        # play the key-down sound again on X auto-repeat
 }
 
 
