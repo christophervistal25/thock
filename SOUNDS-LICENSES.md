@@ -4,8 +4,8 @@ Every sound in `packs/` is a genuine recording from the sources below. Licenses 
 source page on 2026-11-03 (Asia/Manila). Freesound files were taken from the public HQ preview
 (same recording, same license as the original upload). All files were trimmed, split into
 press/release, resampled to 48 kHz mono and level-matched by `tools/build_packs.py`. Some special-key
-samples (noted below) are pitch-shifted copies of the same recording. No sounds from Keeby or any
-commercial product are used.
+samples (noted below) are pitch-shifted copies of the same recording. Apart from Coding Relax (last section),
+no sounds from Keeby or any commercial product are used.
 
 ## Buckling Spring (`packs/buckling`)
 - Source: *bucklespring* by Ico Doornekamp, https://github.com/zevv/bucklespring (commit 43274ed), `wav/` directory:
@@ -87,3 +87,10 @@ CC BY 4.0 = free to use and modify with attribution; the attributions above sati
   (ikki68 Aurora with hand-lubed WS Brown switches; keystrokes sliced from the typing recording; space/enter/backspace are lower-pitched copies).
 
 Thocky, Rainy 75 and Lubed Tactile are built by `tools/build_calm_packs.py`, which downloads the previews itself.
+
+## Coding Relax (`packs/coding-relax`) — added 2026-11-04
+- Recreated from the keyboard and mouse sounds heard in "No AI - Just pure JS hand coding to relax" by Hayyoth,
+  https://www.youtube.com/watch?v=VBORE_zH5oc (key press, key release, spacebar, Enter and mouse click samples
+  lifted from the video's audio). The sounds come from the keyboard-sound software used in the video.
+- License: **not a free license; rights belong to their owners.** Included for personal use only. If you own
+  these sounds and want them removed, open an issue and the pack will be taken down.

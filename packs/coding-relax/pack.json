@@ -1,0 +1,25 @@
+{
+ "name": "Coding Relax",
+ "description": "Sound from the 'pure JS hand coding to relax' video. Personal use only",
+ "private": true,
+ "default": [
+  {
+   "down": "v0-down.wav",
+   "up": "v0-up.wav"
+  }
+ ],
+ "keys": {
+  "57": {
+   "down": "k57-down.wav",
+   "up": "k57-up.wav"
+  },
+  "28": {
+   "down": "k28-down.wav",
+   "up": "k28-up.wav"
+  }
+ },
+ "mouse": {
+  "down": "mouse-down.wav",
+  "up": "mouse-up.wav"
+ }
+}

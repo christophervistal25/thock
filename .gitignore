@@ -4,5 +4,3 @@ __pycache__/
 *.tgz
 .shots/
 .sources/
-# personal-use pack made from a YouTube video: never commit or publish
-packs/coding-relax/

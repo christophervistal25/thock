@@ -13,7 +13,7 @@ Thock is a personal project by Chris (christophervistal25 on GitHub), inspired b
 - Features: separate press and release sounds; tone slider from deep "thock" to bright "clack"; spatial audio (left keys on the left speaker); optional mouse clicks; optional sound on key repeat; natural pitch/volume variation; tray menu and settings window; start at login.
 - Latency: about 15 ms from key press to sound.
 - Privacy: reads key events through the X11 RECORD extension; only the event type and keycode are used in memory to choose and pan a sound, then dropped. No keystroke logging, no storage, no network connections.
-- Sounds: real recordings under free licenses (mostly CC0, some CC BY 4.0, Buckling Spring from bucklespring under GPL-2.0).
+- Sounds: real recordings under free licenses (mostly CC0, some CC BY 4.0, Buckling Spring from bucklespring under GPL-2.0). Exception: the Coding Relax pack recreates the keyboard sound from a Hayyoth video for personal use and is not under a free license.
 
 ## Links
 
