@@ -13,6 +13,7 @@ Every key you press plays a real switch recording. It lives in your tray and sta
 ## Requirements
 
 Ubuntu 22.04+ or another Debian-based Linux, in an **X11** session (`echo $XDG_SESSION_TYPE` should print `x11`).
+On Wayland, see the community [thock-wayland-addon](https://github.com/vitorhmcorreia/thock-wayland-addon) (third-party, not maintained here).
 
 ## Install
 
@@ -32,3 +33,8 @@ Inspired by [Hayyoth](https://www.youtube.com/@hayyoth-org) and their calm, hand
 ## Development
 
 Run the tests: `.venv/bin/python -m unittest discover -s tests -v`
+
+## License
+
+Code: [MIT](LICENSE). Sound packs keep their own licenses: see [SOUNDS-LICENSES.md](SOUNDS-LICENSES.md).
+Add-on authors: stable interfaces are listed in [CHANGELOG.md](CHANGELOG.md).

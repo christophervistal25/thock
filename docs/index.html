@@ -50,6 +50,7 @@
       "image": "https://christophervistal25.github.io/thock/favicon.svg",
       "fileSize": "15MB",
       "isAccessibleForFree": true,
+      "license": "https://opensource.org/licenses/MIT",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" },
       "featureList": [
         "14 sound packs from real recordings: Thocky, Rainy 75, Lubed Tactile, Buckling Spring (IBM Model M), Clicky Blue, Tactile Brown, Soft Tactile, Deep Clear, Smooth Linear, Box Jade, Topre, Vintage Alps, Typewriter, Laptop",
@@ -72,11 +73,11 @@
         { "@type": "Question", "name": "What is Thock?",
           "acceptedAnswer": { "@type": "Answer", "text": "Thock is a free Linux app that plays a real mechanical keyboard sound every time you press a key. It runs in the system tray and has 14 sound packs recorded from real keyboards." } },
         { "@type": "Question", "name": "Is Thock free?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Thock is free to download and use, and its source code is on GitHub." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Thock is free and open source under the MIT license. Its code is on GitHub; sound packs keep their own licenses." } },
         { "@type": "Question", "name": "Does Thock work on Windows or macOS?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 session." } },
         { "@type": "Question", "name": "Does Thock work on Wayland?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Not yet. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose Ubuntu on Xorg at the login screen to use Thock." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Not built in. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose Ubuntu on Xorg at the login screen, or try the community thock-wayland-addon (https://github.com/vitorhmcorreia/thock-wayland-addon), a third-party add-on that runs Thock on Wayland." } },
         { "@type": "Question", "name": "Does Thock record or log what I type?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. Thock only uses which key went down or up to pick and pan a sound, then forgets it. Nothing you type is logged, stored or sent, and Thock makes no network connections." } },
         { "@type": "Question", "name": "How do I install Thock on Ubuntu?",
@@ -135,7 +136,7 @@ cd ~/thock &amp;&amp; ./install.sh</pre>
   <li>Speakers or headphones, ideally stereo</li>
   <li>About 15 MB of disk space</li>
 </ul>
-<p>Wayland isn't supported yet: it doesn't let apps hear system-wide key presses.</p>
+<p>Wayland isn't supported out of the box: it doesn't let apps hear system-wide key presses. See <a href="#faq">FAQ</a> for a community add-on.</p>
 <p>Something not working? See <a href="#troubleshooting">Troubleshooting</a> below.</p>
 
 <h3>Update</h3>
@@ -274,13 +275,13 @@ cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
 <p>Thock is a free Linux app that plays a real mechanical keyboard sound every time you press a key. It runs in the system tray and has 14 sound packs recorded from real keyboards.</p>
 
 <h3>Is Thock free?</h3>
-<p>Yes. Thock is free to download and use, and its source code is on <a href="https://github.com/christophervistal25/thock" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+<p>Yes. Thock is free and open source under the <a href="https://github.com/christophervistal25/thock/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. Its code is on <a href="https://github.com/christophervistal25/thock" target="_blank" rel="noopener noreferrer">GitHub</a>; sound packs keep their own licenses.</p>
 
 <h3>Does Thock work on Windows or macOS?</h3>
 <p>No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 session.</p>
 
 <h3>Does Thock work on Wayland?</h3>
-<p>Not yet. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose <b>Ubuntu on Xorg</b> at the login screen to use Thock.</p>
+<p>Not built in. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose <b>Ubuntu on Xorg</b> at the login screen, or try the community <a href="https://github.com/vitorhmcorreia/thock-wayland-addon" target="_blank" rel="noopener noreferrer">thock-wayland-addon</a> by vitorhmcorreia, a third-party add-on that runs Thock on Wayland. It is not maintained by Thock and installs a system service with sudo, so read it before installing.</p>
 
 <h3>Does Thock record or log what I type?</h3>
 <p>No. Thock only uses which key went down or up to pick and pan a sound, then forgets it. Nothing you type is logged, stored or sent, and Thock makes no network connections. Details: <a href="#privacy">Privacy</a>.</p>
