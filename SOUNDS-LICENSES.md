@@ -1,5 +1,7 @@
 # Sound sources and licenses
 
+The MIT license in LICENSE covers Thock's code only. Each sound pack keeps the license listed below.
+
 Every sound in `packs/` is a genuine recording from the sources below. Licenses were checked on each
 source page on 2026-11-03 (Asia/Manila). Freesound files were taken from the public HQ preview
 (same recording, same license as the original upload). All files were trimmed, split into
