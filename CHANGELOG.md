@@ -11,6 +11,8 @@ They stay stable; any change will be announced here first.
 
 ## Unreleased
 
+- Wayland support: key and mouse-button events come from thock-inputd, a small sandboxed system service
+  (`helper/`), chosen automatically in a Wayland session. `install.sh` offers to set it up. X11 is unchanged.
 - MIT license for the code (sound packs keep their own licenses, see SOUNDS-LICENSES.md).
 - Calm sound packs: Thocky, Rainy 75, Lubed Tactile.
 - Coding Relax pack (personal use, not under a free license).

@@ -1,0 +1,3 @@
+# System user for thock-inputd (installed as /etc/sysusers.d/thock-inputd.conf)
+u thock-inputd - "Thock input helper" /nonexistent /usr/sbin/nologin
+m thock-inputd input

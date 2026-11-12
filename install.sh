@@ -21,8 +21,21 @@ else
   echo "Not a Debian/Ubuntu system; make sure these are installed: $DEPS"
 fi
 
-if [ "${XDG_SESSION_TYPE:-}" = "wayland" ]; then
-  echo "Warning: this is a Wayland session. Thock needs X11 (pick 'Ubuntu on Xorg' at login)."
+if [ "${XDG_SESSION_TYPE:-}" = "wayland" ] && ! systemctl is-active --quiet thock-inputd 2>/dev/null; then
+  echo
+  echo "This is a Wayland session. Wayland doesn't let apps hear key presses system-wide, so Thock"
+  echo "needs a small system service, thock-inputd, that reads /dev/input and passes key and mouse-button"
+  echo "events to your session only (see 'Wayland' in README.md). Setting it up needs sudo."
+  ANSWER=""
+  if [ -r /dev/tty ]; then
+    printf "Set up thock-inputd now? [y/N] "
+    read -r ANSWER </dev/tty || ANSWER=""
+  fi
+  case "$ANSWER" in
+    y|Y|yes|YES) "$HERE/helper/install-inputd.sh" ;;
+    *) echo "Skipped. Set it up later with: $HERE/helper/install-inputd.sh" ;;
+  esac
+  echo
 fi
 
 [ -x .venv/bin/python ] || python3 -m venv --system-site-packages .venv

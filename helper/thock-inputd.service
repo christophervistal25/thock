@@ -1,0 +1,50 @@
+[Unit]
+Description=Thock input helper (key and mouse-button events for Thock on Wayland)
+Documentation=https://github.com/christophervistal25/thock#wayland
+After=systemd-logind.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -I /usr/local/lib/thock/thock-inputd.py
+Restart=on-failure
+RestartSec=3
+
+# Not root: a system user whose only extra right is reading input devices (created by
+# /etc/sysusers.d/thock-inputd.conf). Not DynamicUser=: the system D-Bus refuses dynamic users
+# ("Transport endpoint is not connected"), and the lock check needs logind over D-Bus.
+User=thock-inputd
+Group=thock-inputd
+SupplementaryGroups=input
+RemoveIPC=yes
+RuntimeDirectory=thock-inputd
+RuntimeDirectoryMode=0755
+
+# Read-only view of the system, no network, no new privileges.
+DevicePolicy=closed
+DeviceAllow=char-input r
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateNetwork=yes
+RestrictAddressFamilies=AF_UNIX
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
