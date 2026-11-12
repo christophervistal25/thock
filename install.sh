@@ -55,4 +55,8 @@ autostart.set_enabled(True)
 print("launcher:", os.path.join(apps, "thock.desktop"))
 print("autostart:", autostart.AUTOSTART)
 PY
+# KDE launches app-menu entries from its own cache (ksycoca). Refresh it, or after re-running this
+# script over an older entry the menu may keep starting the old command.
+command -v kbuildsycoca6 >/dev/null 2>&1 && kbuildsycoca6 >/dev/null 2>&1 || true
+command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database -q "$HOME/.local/share/applications" 2>/dev/null || true
 echo "Done. Start it now with: $HERE/bin/thock"
