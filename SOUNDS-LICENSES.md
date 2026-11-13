@@ -96,3 +96,11 @@ Thocky, Rainy 75 and Lubed Tactile are built by `tools/build_calm_packs.py`, whi
   lifted from the video's audio). The sounds come from the keyboard-sound software used in the video.
 - License: **not a free license; rights belong to their owners.** Included for personal use only. If you own
   these sounds and want them removed, open an issue and the pack will be taken down.
+
+## Mechvibes packs (`packs/mv-*`) — added 2026-11-13
+- The keyboard sound packs bundled with Mechvibes, https://github.com/hainguyents13/mechvibes (commit 16afce4),
+  `soundpacks/keyboard/`: Cherry MX Black (ABS, PBT), Cherry MX Red (ABS), Cherry MX Brown (ABS, PBT),
+  Cherry MX Blue (ABS, PBT), EG Oreo, EG Crystal Purple, Topre Purple Hybrid (PBT). Author: Mechvibes.
+- License: **MIT**, Copyright (c) 2026 Hải Nguyễn. The full license text is in each pack folder (`LICENSE-MIT.txt`).
+- Converted by `tools/build_mechvibes_packs.py`: per-key press/release segments from each pack's config, 10 letter keys
+  kept as variants plus Space, Enter, Backspace, Tab, Shift and Caps Lock; leading silence trimmed, short fades, level-matched.

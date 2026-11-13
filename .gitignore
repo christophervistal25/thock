@@ -4,3 +4,6 @@ __pycache__/
 *.tgz
 .shots/
 .sources/
+
+# personal, local-only packs: never commit or publish
+packs/personal-*/
