@@ -1,6 +1,6 @@
 # Thock
 
-> Thock is a free Linux desktop app that plays real mechanical keyboard sounds as you type. It runs in the system tray on Ubuntu 22.04+ and other Debian-based distributions in an X11 session (not Wayland, not Windows, not macOS). 14 sound packs recorded from real keyboards, about 15 ms latency, and it never logs, stores or sends what you type.
+> Thock is a free Linux desktop app that plays real mechanical keyboard sounds as you type. It runs in the system tray on Ubuntu 22.04+ and other Debian-based distributions in an X11 session (not Wayland, not Windows, not macOS). 24 sound packs recorded from real keyboards, about 15 ms latency, and it never logs, stores or sends what you type.
 
 Thock is a personal project by Chris (christophervistal25 on GitHub), inspired by the calm, hand-coded programming videos of the YouTube channel Hayyoth (not affiliated). Current version: 1.0.0. Price: free. License: MIT (code); sound packs keep their own licenses.
 
@@ -8,12 +8,12 @@ Thock is a personal project by Chris (christophervistal25 on GitHub), inspired b
 
 - Platform: Linux only (Ubuntu 22.04 or newer, Debian-based), X11 session required. Wayland is not supported out of the box because it does not let apps hear system-wide key presses; a third-party community add-on exists: https://github.com/vitorhmcorreia/thock-wayland-addon
 - Install: `cd ~ && wget -qO- https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz | tar xz && cd thock && ./install.sh && bin/thock`
-- Sound packs (14): Thocky, Rainy 75, Lubed Tactile (calm, deep packs); Buckling Spring (IBM Model M), Clicky Blue (Cherry MX Blue), Tactile Brown (Cherry MX Brown), Soft Tactile, Deep Clear (Cherry MX Clear), Smooth Linear (Keychron linear), Box Jade (Kailh), Topre (HHKB), Vintage Alps (1987 Apple, ALPS SKCM Orange), Typewriter, Laptop (MacBook).
-- Most relaxing packs: Thocky and Rainy 75.
+- Sound packs (24): Thocky, Rainy 75, Lubed Tactile (calm, deep packs); Buckling Spring (IBM Model M), Clicky Blue (Cherry MX Blue), Tactile Brown (Cherry MX Brown), Soft Tactile, Deep Clear (Cherry MX Clear), Smooth Linear (Keychron linear), Box Jade (Kailh), Topre (HHKB), Vintage Alps (1987 Apple, ALPS SKCM Orange), Typewriter, Laptop (MacBook); and 10 packs from Mechvibes (MIT): Cherry MX Black, Red, Brown and Blue (ABS and PBT keycaps), Everglide Oreo, Everglide Crystal Purple and Topre Purple Hybrid.
+- Most relaxing packs: Thocky and Rainy 75; Everglide Oreo and Topre Purple Hybrid are also deep and muted.
 - Features: separate press and release sounds; tone slider from deep "thock" to bright "clack"; spatial audio (left keys on the left speaker); optional mouse clicks; optional sound on key repeat; natural pitch/volume variation; tray menu and settings window; start at login.
 - Latency: about 15 ms from key press to sound.
 - Privacy: reads key events through the X11 RECORD extension; only the event type and keycode are used in memory to choose and pan a sound, then dropped. No keystroke logging, no storage, no network connections.
-- Sounds: real recordings under free licenses (mostly CC0, some CC BY 4.0, Buckling Spring from bucklespring under GPL-2.0). Exception: the Coding Relax pack recreates the keyboard sound from a Hayyoth video for personal use and is not under a free license.
+- Sounds: real recordings under free licenses (mostly CC0, some CC BY 4.0, Buckling Spring from bucklespring under GPL-2.0, 10 packs from Mechvibes under MIT). Exception: the Coding Relax pack recreates the keyboard sound from a Hayyoth video for personal use and is not under a free license.
 
 ## Links
 
