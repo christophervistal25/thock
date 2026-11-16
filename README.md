@@ -62,6 +62,7 @@ Sound packs, usage, troubleshooting, uninstall, privacy and sound credits are on
 [website](https://christophervistal25.github.io/thock/). Sound sources and licenses: [SOUNDS-LICENSES.md](SOUNDS-LICENSES.md).
 
 Inspired by [Hayyoth](https://www.youtube.com/@hayyoth-org) and their calm, hand-coded programming videos.
+Wayland support contributed by [Vitor Correia](https://github.com/vitorhmcorreia). Thank you!
 
 ## Development
 
