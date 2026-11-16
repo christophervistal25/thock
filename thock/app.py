@@ -111,7 +111,7 @@ def run_app(argv):
     from gi.repository import Gtk, Gio, GLib
     from .config import Config
     from .engine import Engine
-    from .xinput import XInputListener
+    from .listener import make_listener, backend, LABELS
     from .ui import Tray, SettingsWindow
 
     class ThockApp(Gtk.Application):
@@ -128,9 +128,9 @@ def run_app(argv):
             self.engine = Engine(self.cfg)
             self.engine.start()
             _log(f"audio ready (output latency {self.engine.mixer.output_latency*1000:.1f} ms)")
-            self.listener = XInputListener(self.engine.key_down, self.engine.key_up, self.engine.button)
+            self.listener = make_listener(self.engine.key_down, self.engine.key_up, self.engine.button)
             self.listener.start()
-            _log("listening for key and mouse events via X RECORD")
+            _log(f"listening for key and mouse events via {LABELS[backend()]}")
             self.tray = Tray(self)
             _log("tray icon ready")
             GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, signal.SIGTERM, self._sig)
@@ -187,6 +187,10 @@ def main():
     if args.self_test:
         return self_test(args)
     if args.latency_test:
+        from .listener import backend
+        if backend() != "x11":
+            _log("--latency-test needs X11 (XTest); it is not available on Wayland")
+            return 1
         return latency_test(args)
     fw = [a for a in ("--settings", "--quit") if getattr(args, a[2:])]
     return run_app(fw)

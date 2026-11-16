@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thock: free mechanical keyboard sounds app for Linux (Ubuntu, X11)</title>
+<title>Thock: free mechanical keyboard sounds app for Linux (Ubuntu, X11 and Wayland)</title>
 <meta name="description" content="Thock is a free Linux app that plays real mechanical keyboard sounds as you type on Ubuntu and other Debian-based desktops. 24 sound packs, mouse clicks, tone control, spatial audio, about 15 ms latency. Nothing you type is stored or sent.">
 <meta name="author" content="Chris (christophervistal25)">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -40,9 +40,9 @@
       "url": "https://christophervistal25.github.io/thock/",
       "applicationCategory": "UtilitiesApplication",
       "applicationSubCategory": "Keyboard sound simulator",
-      "operatingSystem": "Linux (Ubuntu 22.04 or newer, Debian-based distributions, X11 session)",
+      "operatingSystem": "Linux (Ubuntu 22.04 or newer, Debian-based distributions, X11 or Wayland session)",
       "softwareVersion": "1.0.0",
-      "softwareRequirements": "X11 session, Python 3, PortAudio, GTK 3, AyatanaAppIndicator",
+      "softwareRequirements": "X11 or Wayland session (Wayland: the thock-inputd system service, set up once with sudo), Python 3, PortAudio, GTK 3, AyatanaAppIndicator",
       "downloadUrl": "https://github.com/christophervistal25/thock/releases/latest/download/thock-linux.tar.gz",
       "installUrl": "https://christophervistal25.github.io/thock/#install",
       "releaseNotes": "https://github.com/christophervistal25/thock/releases/latest",
@@ -75,9 +75,9 @@
         { "@type": "Question", "name": "Is Thock free?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes. Thock is free and open source under the MIT license. Its code is on GitHub; sound packs keep their own licenses." } },
         { "@type": "Question", "name": "Does Thock work on Windows or macOS?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 session." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 or Wayland session." } },
         { "@type": "Question", "name": "Does Thock work on Wayland?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Not built in. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose Ubuntu on Xorg at the login screen, or try the community thock-wayland-addon (https://github.com/vitorhmcorreia/thock-wayland-addon), a third-party add-on that runs Thock on Wayland." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, with a one-time setup. Wayland does not let apps hear system-wide key presses, so there Thock gets them from thock-inputd, a small sandboxed system service that only talks to your session and goes quiet while the screen is locked. install.sh offers to set it up (needs sudo once), or run helper/install-inputd.sh. Wayland support was contributed by Vitor Correia (vitorhmcorreia). It is in the latest code from GitHub and will be in the next release download." } },
         { "@type": "Question", "name": "Does Thock record or log what I type?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. Thock only uses which key went down or up to pick and pan a sound, then forgets it. Nothing you type is logged, stored or sent, and Thock makes no network connections." } },
         { "@type": "Question", "name": "How do I install Thock on Ubuntu?",
@@ -114,7 +114,7 @@
   <a href="https://github.com/christophervistal25/thock" target="_blank" rel="noopener noreferrer">Source on GitHub</a> |
   <a href="https://github.com/christophervistal25/thock/releases/latest" target="_blank" rel="noopener noreferrer">Release notes</a>
 </p>
-<p>Free. Ubuntu / Debian. X11 session. Version 1.0.0. Last updated: <time datetime="2026-11-04">2026-11-04</time>.</p>
+<p>Free. Ubuntu / Debian. X11 or Wayland. Version 1.0.0. Last updated: <time datetime="2026-11-04">2026-11-04</time>.</p>
 <p><a href="#install">Install</a> | <a href="#faq">FAQ</a> | <a href="#packs">Sound packs</a> | <a href="#troubleshooting">Troubleshooting</a> | <a href="#credits">Credits</a></p>
 </header>
 
@@ -132,11 +132,20 @@ cd ~/thock &amp;&amp; ./install.sh</pre>
 <h3>Requirements</h3>
 <ul>
   <li>Ubuntu 22.04 or newer, or another Debian-based Linux</li>
-  <li>An X11 session (on Ubuntu, choose "Ubuntu on Xorg" at the login screen). Check with <code>echo $XDG_SESSION_TYPE</code></li>
+  <li>An X11 or Wayland session. Check with <code>echo $XDG_SESSION_TYPE</code></li>
   <li>Speakers or headphones, ideally stereo</li>
   <li>About 15 MB of disk space</li>
 </ul>
-<p>Wayland isn't supported out of the box: it doesn't let apps hear system-wide key presses. See <a href="#faq">FAQ</a> for a community add-on.</p>
+<h3 id="wayland">Wayland</h3>
+<p>X11 works out of the box. Wayland doesn't let apps hear system-wide key presses, so there Thock uses <b>thock-inputd</b>, a small system service that reads key and mouse-button events from <code>/dev/input</code> and passes them to your session only. <code>install.sh</code> offers to set it up when it sees a Wayland session (needs sudo once). You can also run it yourself from the git version:</p>
+<pre>helper/install-inputd.sh              # install or update
+helper/install-inputd.sh --uninstall  # remove it again</pre>
+<ul>
+  <li>It runs as its own system user with no root rights, no network and a read-only view of the system.</li>
+  <li>Only your user can connect, and nothing is sent while your screen is locked.</li>
+  <li>By default, letter and digit keys are sent only as one of five keyboard zones, so nothing that reads it can tell what you typed. Every pack sounds the same as on X11 except Buckling Spring, which has a recording per key.</li>
+</ul>
+<p>Wayland support was contributed by <a href="https://github.com/vitorhmcorreia" target="_blank" rel="noopener noreferrer">Vitor Correia (vitorhmcorreia)</a>. Thank you! It is in the latest code on GitHub; the Download link gets it with the next release.</p>
 <p>Something not working? See <a href="#troubleshooting">Troubleshooting</a> below.</p>
 
 <h3>Update</h3>
@@ -179,7 +188,7 @@ cd ~/thock &amp;&amp; ./install.sh</pre>
 <p>If the error persists, delete the environment so it's rebuilt: <code>rm -rf .venv &amp;&amp; ./install.sh</code>.</p>
 
 <h3>No sound at all while typing, and you're on Wayland</h3>
-<p><code>echo $XDG_SESSION_TYPE</code> prints <code>wayland</code>. Wayland doesn't let apps hear system-wide key presses, so Thock can't work there. Log out, click the gear icon on the login screen, choose <b>Ubuntu on Xorg</b>, and log in again.</p>
+<p><code>echo $XDG_SESSION_TYPE</code> prints <code>wayland</code>. Check the input service with <code>systemctl status thock-inputd</code>. If it isn't installed or running, set it up with <code>helper/install-inputd.sh</code> (see <a href="#wayland">Wayland</a>). Its log, <code>journalctl -u thock-inputd -f</code>, shows "session ... muted" while the screen is locked or another session is in front. Or log in with <b>Ubuntu on Xorg</b> from the gear icon on the login screen.</p>
 
 <h3>No tray icon (GNOME)</h3>
 <p>GNOME needs the AppIndicator extension to show tray icons. Ubuntu ships it on by default (<i>Ubuntu AppIndicators</i>). Check and turn it on:</p>
@@ -191,7 +200,7 @@ gnome-extensions enable ubuntu-appindicators@ubuntu.com</pre>
 <ol>
   <li>Check that the right output is selected and not muted in <b>Settings &gt; Sound</b>.</li>
   <li>Check Thock isn't paused (tray: <b>Sounds On</b>, or the switch in settings) and the volume isn't at 0.</li>
-  <li>Run <code>bin/thock --self-test</code>. If you hear the test sweep, audio works and the problem is key capture (see Wayland and RECORD). If you don't, it's the audio output.</li>
+  <li>Run <code>bin/thock --self-test</code>. If you hear the test sweep, audio works and the problem is key capture (see the Wayland and RECORD sections). If you don't, it's the audio output.</li>
   <li>Thock uses your system default output, so switch the default device in Sound settings, then restart Thock (<code>bin/thock --quit</code>, then <code>bin/thock</code>).</li>
 </ol>
 
@@ -289,10 +298,10 @@ cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
 <p>Yes. Thock is free and open source under the <a href="https://github.com/christophervistal25/thock/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. Its code is on <a href="https://github.com/christophervistal25/thock" target="_blank" rel="noopener noreferrer">GitHub</a>; sound packs keep their own licenses.</p>
 
 <h3>Does Thock work on Windows or macOS?</h3>
-<p>No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 session.</p>
+<p>No. Thock runs on Linux only: Ubuntu 22.04 or newer and other Debian-based distributions, in an X11 or Wayland session.</p>
 
 <h3>Does Thock work on Wayland?</h3>
-<p>Not built in. Wayland does not let apps hear system-wide key presses. On Ubuntu, choose <b>Ubuntu on Xorg</b> at the login screen, or try the community <a href="https://github.com/vitorhmcorreia/thock-wayland-addon" target="_blank" rel="noopener noreferrer">thock-wayland-addon</a> by vitorhmcorreia, a third-party add-on that runs Thock on Wayland. It is not maintained by Thock and installs a system service with sudo, so read it before installing.</p>
+<p>Yes, with a one-time setup. Wayland does not let apps hear system-wide key presses, so there Thock gets them from <b>thock-inputd</b>, a small sandboxed system service that only talks to your session and goes quiet while the screen is locked. <code>install.sh</code> offers to set it up (needs sudo once), or run <code>helper/install-inputd.sh</code>. Details: <a href="#wayland">Wayland</a>. Wayland support was contributed by <a href="https://github.com/vitorhmcorreia" target="_blank" rel="noopener noreferrer">Vitor Correia</a>. It is in the latest code from GitHub and will be in the next release download.</p>
 
 <h3>Does Thock record or log what I type?</h3>
 <p>No. Thock only uses which key went down or up to pick and pan a sound, then forgets it. Nothing you type is logged, stored or sent, and Thock makes no network connections. Details: <a href="#privacy">Privacy</a>.</p>
@@ -357,6 +366,11 @@ cd ~ &amp;&amp; rm -rf ~/thock      # the app itself</pre>
 <h3>MIT (Mechvibes)</h3>
 <ul>
   <li>Cherry MX Black, Red, Brown and Blue, Everglide Oreo, Everglide Crystal Purple and Topre Purple Hybrid: the keyboard sound packs bundled with <a href="https://github.com/hainguyents13/mechvibes" target="_blank" rel="noopener noreferrer">Mechvibes</a>, Copyright (c) 2026 Hải Nguyễn, <a href="https://github.com/hainguyents13/mechvibes/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>. Converted to Thock's format; each pack folder includes the license text.</li>
+</ul>
+
+<h3>Code contributions</h3>
+<ul>
+  <li>Wayland support (thock-inputd): <a href="https://github.com/vitorhmcorreia" target="_blank" rel="noopener noreferrer">Vitor Correia (vitorhmcorreia)</a>, who first built it as the thock-wayland-addon.</li>
 </ul>
 
 <h3>GPL-2.0</h3>
